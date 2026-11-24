@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#174953">
+  <title>青羽島飛行實驗場｜拋體運動</title>
+  <link rel="stylesheet" href="flight-lab.css">
+  <script defer src="flight-scene.js"></script>
+  <script defer src="flight-lab.js"></script>
+</head>
+<body>
+<main id="lab" data-mode="trial">
+  <canvas id="world" aria-hidden="true" hidden></canvas>
+  <canvas id="plot" tabindex="0" aria-label="飛行試驗場。按着鳥仔向左下拉，放手發射。鍵盤可用發射設定調節，再按發射。"></canvas>
+  <div id="marks" aria-label="軌跡讀數"></div>
+
+  <header class="top">
+    <div class="brand">
+      <h1>青羽島<span>飛行實驗場</span></h1>
+    </div>
+    <nav class="modes" aria-label="飛行活動">
+      <button type="button" data-mode="trial" aria-pressed="true"><i>1</i> 拉放試玩</button>
+      <button type="button" data-mode="study" aria-pressed="false"><i>2</i> 實驗比較</button>
+      <button type="button" data-mode="challenge" aria-pressed="false">落區挑戰</button>
+    </nav>
+    <button type="button" id="fullscreen" aria-pressed="false"><span aria-hidden="true">⛶</span> <span id="full-text">全螢幕</span></button>
+  </header>
+
+  <aside id="dock" aria-label="教師控制">
+    <fieldset class="filters">
+      <legend>軌跡標示</legend>
+      <div class="switches">
+        <label><input type="checkbox" data-show="height" checked><span><b>H</b><small>最大高度</small></span></label>
+        <label><input type="checkbox" data-show="range" checked><span><b>R</b><small>水平射程</small></span></label>
+        <label><input type="checkbox" data-show="time" checked><span><b>t</b><small>總飛行時間</small></span></label>
+      </div>
+    </fieldset>
+    <button type="button" id="trial-retry" hidden>重試</button>
+    <details id="manual">
+      <summary>發射設定</summary>
+      <div class="parameters">
+      <div class="param">
+        <label for="speed">初速率 <output id="speed-value" for="speed">12.0 m/s</output></label>
+        <button type="button" class="lock" data-lock="speed" aria-label="鎖定初速率" aria-pressed="false" hidden>鎖定</button>
+        <input id="speed" type="range" min="8" max="16" step="0.5" value="12">
+      </div>
+      <div class="param">
+        <label for="angle">發射角度 <output id="angle-value" for="angle">45°</output></label>
+        <button type="button" class="lock" data-lock="angle" aria-label="鎖定發射角度" aria-pressed="false" hidden>鎖定</button>
+        <input id="angle" type="range" min="15" max="75" step="1" value="45">
+      </div>
+      </div>
+      <div class="actions">
+        <button type="button" id="launch">發射 ↗</button>
+        <button type="button" id="pause" hidden>暫停</button>
+        <button type="button" id="clear" hidden>清除記錄</button>
+      </div>
+    </details>
+    <details id="records" hidden open>
+      <summary id="record-title">最近三次</summary>
+      <table aria-label="試次比較">
+        <thead><tr><th scope="col">軌跡</th><th scope="col">u<br>m/s</th><th scope="col">θ<br>°</th>
+          <th scope="col" data-col="height">H<br>m</th><th scope="col" data-col="range">R<br>m</th><th scope="col" data-col="time">t<br>s</th>
+        </tr></thead>
+        <tbody id="record-rows"></tbody>
+      </table>
+    </details>
+  </aside>
+
+  <section id="goals" aria-label="同一落區，兩條路徑" hidden>
+    <h2>同一落區，兩條路徑</h2>
+    <p>初速率 12 m/s · 落點 12.47 m</p>
+    <div aria-label="選擇挑戰情景"><button id="goal-low" data-route="low" type="button"></button><button id="goal-high" data-route="high" type="button"></button></div>
+    <button type="button" id="repeat-angle" hidden>用同一角度試情景二</button>
+    <button type="button" id="compare-routes" hidden>重疊比較兩條軌跡</button>
+    <button type="button" id="replay-routes" hidden>同時重播兩條路徑</button>
+  </section>
+  <div id="pull-hint" aria-hidden="true">按住小鳥，向左下拉 <b>↙</b></div>
+
+  <footer class="hud">
+    <div class="telemetry" aria-label="發射設定讀數">
+      <span>初速率 <strong id="hud-speed">12.0</strong> m/s</span>
+      <span>角度 <strong id="hud-angle">45</strong>°</span>
+      <span id="clock-wrap" hidden>經過 <strong id="clock">0.00</strong> s</span>
+    </div>
+    <p id="status" role="status"></p>
+    <span id="scene-note" hidden>平面圖模式</span>
+  </footer>
+</main>
+<script>
+  document.addEventListener('keydown', event => {
+    if (window.parent === window || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.target?.closest?.('input, select, textarea')) return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    window.parent.postMessage({ type: 'lab-slide-navigation', direction: event.key }, '*');
+  });
+</script>
+</body>
+</html>

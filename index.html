@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fafaf7">
+  <title>Physics Playground · 物理教室</title>
+  <link rel="icon" href="home/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="home/site.css">
+  <script defer src="home/navigation.js"></script>
+  <script defer src="home/playground.js"></script>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <picture>
+      <source media="(max-aspect-ratio: 1/1)" srcset="home/playground-portrait.webp">
+      <img class="poster" src="home/playground.webp" alt="柴犬和橘色虎斑貓在物理教室內散步，右方放着一座牛頓擺。" draggable="false">
+    </picture>
+    <canvas id="playground" aria-label="柴犬和橘色虎斑貓會走過標題前方。輕點畫面讓牠們走近，或按 Enter 選擇位置。" role="button" tabindex="-1"></canvas>
+  </div>
+  <div class="sheet">
+    <header class="masthead">
+      <a class="brand" href="#home" aria-label="物理教室首頁">
+        <img src="home/icon.svg" alt="" width="36" height="36">
+        <span>物理教室</span>
+      </a>
+      <nav class="switcher" aria-label="教材分類">
+        <a href="#lessons" aria-controls="lessons" aria-expanded="false" lang="en">Lessons<span class="nav-mark" aria-hidden="true"></span></a>
+        <a href="#simulations" aria-controls="simulations" aria-expanded="false" lang="en">Simulations<span class="nav-mark" aria-hidden="true"></span></a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <div class="copy">
+        <section class="intro" aria-labelledby="home-title">
+          <h1 id="home-title" lang="en">Physics<br>Playground<span class="full-stop">.</span></h1>
+          <p class="subtitle">物理簡報與互動實驗</p>
+        </section>
+
+        <section class="catalogue" id="lessons" aria-labelledby="lessons-title">
+          <h2 tabindex="-1" id="lessons-title" lang="en">Lessons<span class="full-stop">.</span></h2>
+          <p class="subtitle">教學簡報</p>
+          <ul class="entries">
+            <li><a href="bk2-8-1-projectile/index.html"><span class="topic">8.1</span><span>認識拋體運動</span><i aria-hidden="true">↗</i></a></li>
+            <li><a href="bk2-8-2-projectile/index.html"><span class="topic">8.2</span><span>分析拋體運動</span><i aria-hidden="true">↗</i></a></li>
+            <li><a href="bk2-9-2-centripetal/index.html"><span class="topic">9.2</span><span>向心力與向心加速度</span><i aria-hidden="true">↗</i></a></li>
+          </ul>
+        </section>
+
+        <section class="catalogue" id="simulations" aria-labelledby="simulations-title">
+          <h2 tabindex="-1" id="simulations-title" lang="en">Simulations<span class="full-stop">.</span></h2>
+          <p class="subtitle">互動模擬</p>
+          <ul class="entries">
+            <li><a href="bk2-8-1-projectile/simulation/same-level.html"><span class="topic">8.1</span><span>猴子和獵人<span class="detail">同一水平</span></span><i aria-hidden="true">↗</i></a></li>
+            <li><a href="bk2-8-2-projectile/simulation/flight-lab.html"><span class="topic">8.2</span><span>青羽島飛行實驗場</span><i aria-hidden="true">↗</i></a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="table-anchor" id="table-anchor" aria-hidden="true"></div>
+    </main>
+
+    <footer class="baseline">
+      <span class="ground-hint"><span class="target-icon" aria-hidden="true"></span>輕點畫面，讓牠們走過來</span>
+      <div class="footer-actions">
+        <a class="model-credit" href="home/shiba-credit.html">模型鳴謝</a>
+        <button id="motion" class="motion" type="button" aria-pressed="false" hidden><span class="motion-icon" aria-hidden="true"></span><span id="motion-label">暫停動畫</span></button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

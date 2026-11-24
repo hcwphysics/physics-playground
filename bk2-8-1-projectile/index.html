@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173235">
+  <title>8.1 認識拋體運動</title>
+  <link rel="stylesheet" href="vendor/reveal/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section id="intro" class="cover" aria-labelledby="intro-title">
+        <div class="cover-layout">
+          <div class="cover-copy">
+            <p class="cover-number">第 8.1 節</p>
+            <h1 id="intro-title">認識<br>拋體運動</h1>
+            <p class="cover-question">物體拋出後，水平和垂直方向各做甚麼運動？</p>
+          </div>
+          <figure class="cover-photo">
+            <img src="media/snowboard.webp" alt="滑雪者離開斜坡跳起的連拍，相片記下了空中的不同位置">
+            <figcaption>跳躍連拍 · 原投影片封面</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">
+          <p>約 1 分鐘。指原圖問「由哪一個位置開始，滑雪者離開斜坡？」學生指出空中與接觸斜坡兩段，再提出今天要分開看水平和垂直方向。連拍用於辨認位置；稍後用原裝置的頻閃照片看相等時距。</p>
+        </aside>
+      </section>
+
+      <section id="release" aria-labelledby="release-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">拋體運動簡介</p>
+            <h2 id="release-title">籃球離手後，受甚麼力？</h2>
+          </header>
+          <div class="split release-layout">
+            <figure class="media-plate basketball">
+              <img src="media/basketball.webp" alt="原投影片的籃球圖，男孩把籃球垂直向上拋">
+              <figcaption>籃球向上離手 · 原投影片 p.3</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">由籃球離手起，至它再次碰到其他物體前，觀察它的運動。</p>
+              <p class="condition">假設空氣阻力可略去不計。</p>
+              <div class="fragment takeaway">
+                <p>籃球在空中只受<strong>重力</strong>作用。</p>
+                <p>物體射出後只受重力作用的運動，稱為<strong>拋體運動</strong>。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。先圈出所研究的時段，再請學生說出力的名稱和方向。「手的力使球離手，離手後手是否還接觸球？」已離手時只有向下的重力。即使上升，球仍屬自由下落運動。工作紙 p.2 A1 填「重力、拋體」，下一頁完成 (a)–(c)。模型把近地面重力加速度視為常數。</p>
+        </aside>
+      </section>
+
+      <section id="paths" aria-labelledby="paths-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">工作紙 p.2 · A1</p>
+            <h2 id="paths-title">比較三種拋出方式的軌跡</h2>
+          </header>
+          <div class="paths-layout" data-motion="paths" data-motion-auto>
+            <div class="path-captions" aria-hidden="true">
+              <h3>垂直上拋</h3><h3>水平拋出</h3><h3>斜向上拋</h3>
+            </div>
+            <canvas width="1296" height="278" role="img" aria-label="三個位置圖對比垂直上拋、水平拋出和斜向上拋的軌跡。每圖採用相同空間比例。"></canvas>
+            <div class="toolbar">
+              <button type="button" data-action="toggle">播放</button>
+              <button type="button" data-action="step">下一格</button>
+              <button type="button" data-action="reset">回到起點</button>
+            </div>
+            <p class="fragment takeaway compact">物體稱為<strong>拋體</strong>，經過的路徑稱為<strong>軌跡</strong>。有水平速度分量時，軌跡呈<strong>拋物線</strong>；垂直上拋的軌跡是直線。</p>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 4 分鐘。播一次即可。學生在工作紙 p.2 A1(a)–(c) 填「拋體、軌跡、拋物線」。請學生指出哪兩圖符合 (c)；若把垂直上拋也稱為拋物線，沿第一格的路徑用手畫直線。初速率只是課堂示意，三圖共用同一空間比例和 g。生活例子可口述水從水龍頭流出後的路徑。</p>
+        </aside>
+      </section>
+
+      <section id="force" aria-labelledby="force-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">以牛頓運動定律解釋拋體運動</p>
+            <h2 id="force-title">重力箭嘴應該指向哪裏？</h2>
+          </header>
+          <div class="split demo-split" data-motion="force" data-motion-auto>
+            <figure class="model-panel">
+              <canvas width="900" height="389" role="img" aria-label="拋體沿拋物線運動。每個位置的重力箭嘴大小相同，方向垂直向下。"></canvas>
+              <div class="toolbar">
+                <button type="button" data-action="toggle">播放</button>
+                <button type="button" data-action="step">下一格</button>
+                <button type="button" data-action="reset">回到起點</button>
+              </div>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">比較上升、最高點和下降時的重力。</p>
+              <div class="fragment takeaway">
+                <h3><i>mg</i> 垂直向下</h3>
+                <p>根據牛頓第二定律，加速度 <i>g</i> 的大小不變，方向向下。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 3 分鐘。先看重力箭嘴隨球移動。按「回到起點」，再按「下一格」三次停在最高點。預期三個位置的重力大小一樣，方向一直向下。若有人認為在最高點沒有力，指向下箭嘴並請他分辨速度與加速度。繼續播放過最高點，銜接水平分量。</p>
+        </aside>
+      </section>
+
+      <section id="components-law" aria-labelledby="law-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">工作紙 p.2 · B1</p>
+            <h2 id="law-title">同一個拋體，分開兩個方向</h2>
+          </header>
+          <div class="law-layout">
+            <table class="law-table">
+              <thead><tr><th scope="col">方向</th><th scope="col">淨力</th><th scope="col">運動</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="vertical">垂直方向</th><td><i>mg</i> 向下</td><td><div class="fragment"><strong>勻加速運動</strong><small>加速度 <i>g</i> 向下 · 牛頓第二定律</small></div></td></tr>
+                <tr><th scope="row" class="horizontal">水平方向</th><td>0</td><td><div class="fragment"><strong>勻速運動</strong><small>水平速率保持不變 · 牛頓第一定律</small></div></td></tr>
+              </tbody>
+            </table>
+            <p class="fragment takeaway compact">拋體的水平運動和垂直運動<strong>各自獨立</strong>。</p>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 4 分鐘。投影淨力兩欄，請學生填 B1 的「重力、加速度、速率、速率、加速」。揭示後追問「水平淨力為零，若籃球原本向右移動，它接下來怎樣？」判準是水平速率和方向維持不變。若學生答停止，回到牛頓第一定律，指淨力影響速度的改變。</p>
+        </aside>
+      </section>
+
+      <section id="experiment" aria-labelledby="experiment-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">實驗 8a · 工作紙 p.3</p>
+            <h2 id="experiment-title">「猴子和獵人」實驗</h2>
+          </header>
+          <div class="split media-split">
+            <figure class="media-plate">
+              <img src="media/apparatus.webp" alt="原實驗裝置，左側有水平發射器及光閘，右側有受光閘訊號控制的標靶球釋放器">
+              <figcaption>光閘及釋放器 · 原投影片 p.11</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">兩球起點<strong>同高</strong>。</p>
+              <dl class="definition-pairs">
+                <div><dt class="horizontal">實驗球</dt><dd>沿水平方向拋出，經過光閘。</dd></div>
+                <div><dt class="vertical">標靶球</dt><dd>釋放器收到光閘訊號，同時放下原先靜止的球。</dd></div>
+              </dl>
+              <p class="fragment takeaway compact">兩球的垂直初速度都是 0。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 3 分鐘。請學生在 p.3 辨認水平發射、標靶球、光閘和開始下落的時間，核對原題空格「水平、猴子」。用「實驗球」指書上的「子彈」，「標靶球」指書上的「猴子」。若學生只看到一個球在移動，指光閘和釋放器的連接。模型把兩球開始運動的時刻視為相同。</p>
+        </aside>
+      </section>
+
+      <section id="monkey-hunter" aria-labelledby="monkey-hunter-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">實驗 8a · 互動模擬</p>
+            <h2 id="monkey-hunter-title">猴子和獵人｜同一水平</h2>
+          </header>
+          <iframe class="forest-embed" title="猴子和獵人同一水平互動模擬" src="simulation/same-level.html" loading="lazy"></iframe>
+        </div>
+        <aside class="notes">
+          <p>約 3 分鐘。用預設水平發射示範一次。按「返回上次位置和方向」後拖動猴子，只改兩個起點之間的水平距離。保持初速率及重力設定，按「下一格 +0.10 s」停一格，比較小球和猴子同一時刻的高度。橙色箭嘴可調角度；要回到本節的水平發射條件，按「水平對準」。接着用頻閃照片核對實驗所見。</p>
+        </aside>
+      </section>
+
+      <section id="strobe" aria-labelledby="strobe-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">研究拋體的垂直運動</p>
+            <h2 id="strobe-title">在頻閃照片找出同一時刻</h2>
+          </header>
+          <div class="split media-split">
+            <figure class="media-plate">
+              <img src="media/strobe.webp" alt="原教材頻閃照片，左側黃色球由左向右下移，右邊標靶球沿同一條垂線下降">
+              <figcaption>原實驗頻閃照片 · 原投影片 p.14</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p class="condition">頻閃照片記下物體每隔相同時距的位置。</p>
+              <p class="lead">左右各找一個同時刻的位置。兩球當時是否同高？</p>
+              <p class="fragment takeaway">在同一時刻，兩球<strong>下降了相同的垂直距離</strong>。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。由上而下數兩組位置，請一位學生指出一對看得到的同期位置。可以指右下方仍可分開的黃點和暗點。若錯配，回到同時開始，按照同一閃光的順序比較。照片是原實驗觀察，下一頁是理想化模型。</p>
+        </aside>
+      </section>
+
+      <section id="fall-together" aria-labelledby="fall-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">運動模型 · 工作紙 p.4 C1</p>
+            <h2 id="fall-title">兩球在同一時刻下降多少？</h2>
+          </header>
+          <div class="split demo-split" data-motion="pair" data-motion-auto>
+            <figure class="model-panel">
+              <div class="legend-row">
+                <span class="legend horizontal">水平拋出的球</span>
+                <span class="legend vertical">從靜止下落的球</span>
+                <output data-time aria-label="模型時間" aria-live="off"></output>
+              </div>
+              <canvas width="900" height="352" role="img" aria-label="兩球由相同高度同時開始。用虛線連起同一時刻的兩球位置，以比較高度。"></canvas>
+              <div class="toolbar">
+                <button type="button" data-action="toggle">播放</button>
+                <button type="button" data-action="step">下一格</button>
+                <button type="button" data-action="reset">回到起點</button>
+                <div class="segmented" role="group" aria-label="初始水平距離">
+                  <button type="button" data-distance="near" aria-pressed="true">較近</button>
+                  <button type="button" data-distance="far" aria-pressed="false">較遠</button>
+                </div>
+              </div>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">每格相隔 <strong>0.10 s</strong>。比較較近和較遠的兩次。</p>
+              <div class="fragment takeaway">
+                <p>兩球垂直初速度同為 0，垂直加速度同為 <i>g</i> 向下。每個時刻的下落量一樣。</p>
+                <p class="condition">在這兩組設定中，較遠的一組較遲在空中相遇。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 5 分鐘。先讓近組自動播放一次。按「回到起點」，逐格至 0.20 s。切到較遠後，同樣在 0.20 s 停下，比較虛線高度和下落量。請學生在工作紙 C1 圈「不會」，理由是垂直初速度與加速度均相同。模型兩組分別在 0.40 s 和 0.60 s 空中相遇。同高只是相遇的其中一個條件，還要在着地前到達同一水平位置。切換只改初始水平距離。</p>
+        </aside>
+      </section>
+
+      <section id="equal-steps" aria-labelledby="steps-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">工作紙 p.4 · C2</p>
+            <h2 id="steps-title">每隔相同時距，水平移動多遠？</h2>
+          </header>
+          <div class="split step-layout">
+            <figure class="media-plate horizontal-original">
+              <img src="media/horizontal-positions.png" alt="原教材的七個頻閃位置，各位置的垂直投影線等距排列">
+              <figcaption>原投影片 p.17</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">比較第 1 至 2 點和第 2 至 3 點的<strong>水平距離</strong>。</p>
+              <figure class="model-panel" data-motion="spacing" data-motion-auto>
+                <canvas width="810" height="147" role="img" aria-label="小球沿水平方向移動，每隔相同時距留下一個位置點。"></canvas>
+                <div class="toolbar">
+                  <button type="button" data-action="toggle">播放</button>
+                  <button type="button" data-action="step">下一格</button>
+                  <button type="button" data-action="reset">回到起點</button>
+                </div>
+              </figure>
+              <p class="fragment takeaway">每段時距內經過的水平距離<strong>相同</strong>，所以水平速率保持不變。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 3 分鐘。讓學生看小球在水平線上每隔相同時距留下一點。指原圖兩條相鄰投影線，請學生描述間距，再揭示 C2「相同」。常見混淆是量斜向的點距。請學生在圖上指出先投影到水平線，再比較水平位置的差。</p>
+        </aside>
+      </section>
+
+      <section id="combine" aria-labelledby="combine-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">工作紙 p.5 · C3</p>
+            <h2 id="combine-title">用同一時刻的兩個分量找位置</h2>
+          </header>
+          <div class="split demo-split" data-motion="components" data-motion-auto>
+            <figure class="model-panel">
+              <div class="legend-row">
+                <span class="legend horizontal">水平位置</span>
+                <span class="legend vertical">垂直位置</span>
+                <output data-time aria-label="模型時間" aria-live="off"></output>
+              </div>
+              <canvas width="900" height="366" role="img" aria-label="拋體斜拋的軌跡及它在同一時刻的水平與垂直投影。拋體位置是兩條投影線的交點。"></canvas>
+              <div class="toolbar">
+                <button type="button" data-action="toggle">播放</button>
+                <button type="button" data-action="step">下一格</button>
+                <button type="button" data-action="reset">回到起點</button>
+              </div>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">在兩條參考線上，找出同一時刻的水平位置和垂直位置。</p>
+              <p class="fragment takeaway">兩條投影線的<strong>交點</strong>就是拋體在該時刻的位置。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 4 分鐘。逐格停在上升和下降各一次，請學生指兩個分量點與交點。拋體的水平勻速運動與垂直勻加速運動同時發生。若只指一個軸上的點，請他沿兩條投影線找到交點。銜接 A、B 之間的兩個方向距離。</p>
+        </aside>
+      </section>
+
+      <section id="distances" aria-labelledby="distances-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">工作紙 p.5 · C4</p>
+            <h2 id="distances-title">從 A 到 B 的水平和垂直距離</h2>
+          </header>
+          <div class="split">
+            <figure class="media-plate distance-figure">
+              <img src="media/distances.png" alt="拋體由 A 飛到較右下方的 B，底部水平雙箭嘴標 s x，左方垂直雙箭嘴標 s y">
+              <figcaption>工作紙 p.5 的 A、B 圖</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">小球在同一段時間 <i>t</i> 內向右移，也向下移。</p>
+              <dl class="definition-pairs">
+                <div class="fragment"><dt class="horizontal"><i>s</i><sub>x</sub></dt><dd>從 A 到 B 經過的水平距離</dd></div>
+                <div class="fragment"><dt class="vertical"><i>s</i><sub>y</sub></dt><dd>從 A 到 B 經過的垂直距離</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。讓學生在工作紙上用筆尖先指出水平括距，再指出垂直括距。判斷能否把兩段距離對到同一對端點。若沿弧線量，指出題意是分開兩個方向。本圖由 A 至 B 一直向右、向下。</p>
+        </aside>
+      </section>
+
+      <section id="example" aria-labelledby="example-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">例題 1 · 原投影片 p.19–22</p>
+            <h2 id="example-title">描繪拋體的位置</h2>
+          </header>
+          <div class="split question-layout">
+            <div class="copy-stack">
+              <p>P 由 X 點從靜止下落，Q 同時由 X 點水平拋出。</p>
+              <p class="lead">標出 Q 在 <strong>0.1 s</strong> 和 <strong>0.3 s</strong> 的位置。</p>
+              <ol class="reasoning">
+                <li class="fragment" data-fragment-index="0">Q 在 0.2 s 水平移動 4 格，所以每 0.1 s 移動 2 格。</li>
+                <li class="fragment" data-fragment-index="1">Q 與 P 在同一時刻的高度相同。</li>
+              </ol>
+            </div>
+            <figure class="grid-figure">
+              <div class="annotated-grid">
+                <img src="media/example-grid.png" alt="方格圖顯示 P 的四個已知位置，Q 在 0 及 0.2 秒的位置為圓圈">
+                <span class="fragment grid-guide" data-fragment-index="1" style="--x:15%;--y:15.06%;--length:18.05%"></span>
+                <span class="fragment grid-guide" data-fragment-index="1" style="--x:15%;--y:95.96%;--length:54.5%"></span>
+                <span class="fragment plot-point" data-fragment-index="2" style="--x:33.06%;--y:15.06%">0.1 s</span>
+                <span class="fragment plot-point" data-fragment-index="3" style="--x:69.53%;--y:95.96%">0.3 s</span>
+              </div>
+              <figcaption>×　P 由靜止下落　　○　Q 水平拋出</figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 5 分鐘。先給 30 秒讓學生數格。依次揭示水平移動格數、同高的兩條輔助線，最後分兩次顯示點。0.1 s 取向右 2 格及 P 的 0.1 s 高度；0.3 s 取向右 6 格及 P 的 0.3 s 高度。要求學生說出兩個線索。若有人把垂直格距等分，用 P 的標示比較。</p>
+        </aside>
+      </section>
+
+      <section id="classwork" aria-labelledby="classwork-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">工作紙 p.5 · 鞏固 1</p>
+            <h2 id="classwork-title">在工作紙畫出小球 Y 的位置</h2>
+          </header>
+          <div class="split question-layout classwork-layout">
+            <div class="copy-stack">
+              <p>X 從靜止下落，Y 同時從相同高度水平拋出。</p>
+              <ol class="question-list">
+                <li>標出 Y 在 <strong>2 s</strong> 和 <strong>3 s</strong> 的位置。</li>
+                <li>在 3 s 時，X、Y 的速率是否相同？</li>
+              </ol>
+              <p class="fragment takeaway compact" data-fragment-index="1"><strong>速率不同。</strong>兩球垂直速率相同，Y 還有水平速度分量。</p>
+            </div>
+            <figure class="grid-figure">
+              <div class="annotated-grid">
+                <img src="media/classwork-grid.png" alt="原工作紙方格圖，X 和 Y 起點同高，Y 的起點在 X 右方一格。圖中已標出 Y 在 1 秒時的位置。">
+                <span class="fragment grid-guide" data-fragment-index="0" style="--x:9.36%;--y:45.26%;--length:55.74%"></span>
+                <span class="fragment grid-guide" data-fragment-index="0" style="--x:9.36%;--y:88.84%;--length:78.07%"></span>
+                <span class="fragment plot-point filled" data-fragment-index="0" style="--x:65.1%;--y:45.26%">2 s</span>
+                <span class="fragment plot-point filled" data-fragment-index="0" style="--x:87.43%;--y:88.84%">3 s</span>
+              </div>
+              <figcaption class="fragment" data-fragment-index="0">Y 每秒向右移 2 格，高度與同時刻的 X 相同。</figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 5 分鐘，先留約 3 分鐘個人畫點。Y 的 2 s、3 s 位置分別距 Y 起點向右 4 和 6 格，取 X 同一時刻的高度。若出現偏左一格，請學生圈住 Y 的起點再數。第二次揭示核對速率。若學生答「速率相同」，請分別畫出 X 的向下速度箭嘴，以及 Y 的向下、向右分量。</p>
+        </aside>
+      </section>
+
+      <section id="quick-cliff" aria-labelledby="cliff-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">快測 1 · 第 1 題</p>
+            <h2 id="cliff-title">哪些敘述正確？</h2>
+          </header>
+          <div class="quiz-layout">
+            <p class="lead">石頭 A 從懸崖水平擲出。石頭 B 同時由相同高度從靜止下落。空氣阻力可略去不計。</p>
+            <ol class="choices">
+              <li><span>B 先到達水面。</span></li>
+              <li><span>A 和 B 在飛行期間的加速度相同。</span><strong class="fragment" data-fragment-index="0">✓ 正確</strong></li>
+              <li><span>A 和 B 到達水面時的垂直速率相同。</span><strong class="fragment" data-fragment-index="0">✓ 正確</strong></li>
+              <li><span>A 的水平速率在飛行期間不斷下降。</span></li>
+            </ol>
+            <p class="fragment takeaway compact" data-fragment-index="0">兩塊石頭的垂直初速度都是 0，並以同一個向下加速度下落，因此同時到達水面。</p>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。學生先選兩個敘述，再請一位說出其中一個理由。答案第 2、3 項。若選第 1 項，列兩塊石頭相同的初始高度、垂直初速度和加速度。追問兩塊石頭的總速率是否相同，請用 A 的水平速度分量說明。</p>
+        </aside>
+      </section>
+
+      <section id="quick-seed" aria-labelledby="seed-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">快測 1 · 第 2 題</p>
+            <h2 id="seed-title">小鳥放下的種子會落在哪邊？</h2>
+          </header>
+          <div class="split demo-split" data-motion="seed" data-motion-auto>
+            <figure class="media-plate seed-figure">
+              <div class="seed-map">
+                <img src="media/seed.webp" alt="原題插圖，小鳥向右飛，在 B 正上方放下種子。A 在 B 左邊，C 在 B 右邊。">
+                <canvas width="1084" height="572" role="img" aria-label="種子保留向右的水平速度，沿彎曲路徑落向 C 一側。"></canvas>
+              </div>
+              <div class="toolbar fragment" data-fragment-index="0" data-motion-reveal>
+                <button type="button" data-action="toggle">播放種子的運動</button>
+                <button type="button" data-action="reset">回到起點</button>
+              </div>
+            </figure>
+            <div class="copy-stack">
+              <p class="lead">小鳥以恆速度向右飛，在 B 的正上方放下種子。</p>
+              <p class="condition">按圖示情況，A、B、C 誰最可能被擊中？</p>
+              <p class="fragment takeaway" data-fragment-index="1"><strong>C。</strong>種子離開小鳥時，已有向右的水平速度。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。個別選 A、B、C。第一次向右揭示並播放種子模型。第二次揭示理由。若學生選 B，追問種子剛離開小鳥時的水平速度。圖示表示向右落下的趨勢，實際落點視初速率和放下的高度而定。</p>
+        </aside>
+      </section>
+
+      <section id="recap" aria-labelledby="recap-title">
+        <div class="slide-frame recap">
+          <header class="slide-head">
+            <p class="topic">8.1 小結</p>
+            <h2 id="recap-title">怎樣找出拋體的下一個位置？</h2>
+          </header>
+          <div class="recap-steps">
+            <div><h3>看淨力</h3><p>空氣阻力可略去不計時，淨力是向下的重力。</p></div>
+            <div><h3>分開兩個方向</h3><p><strong class="horizontal">水平勻速</strong>，<strong class="vertical">垂直勻加速</strong>。</p></div>
+            <div><h3>對準同一時刻</h3><p>合起該時刻的水平位置和高度，就得到拋體的位置。</p></div>
+          </div>
+          <nav class="appendix-links" aria-label="選用的手機小實驗">
+            <a href="#/coins">手機小實驗｜硬幣</a>
+            <a href="#/ramps">手機小實驗｜乒乓球</a>
+          </nav>
+        </div>
+        <aside class="notes">
+          <p>約 1 分鐘。指着 p.5 同一個時刻的點，請學生用兩個方向各說一個理由，作離堂核對。核心可停在這裏。若有時間，可選下兩頁作拍攝活動；工作紙 p.6 開始進入 8.2 的計算。</p>
+        </aside>
+      </section>
+
+      <section id="coins" aria-labelledby="coins-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">手機小實驗 · 原投影片 p.23–26</p>
+            <h2 id="coins-title">比較兩枚硬幣的垂直運動</h2>
+          </header>
+          <div class="split media-split">
+            <figure class="media-plate">
+              <img src="media/coins.webp" alt="原教材的兩步驟裝置圖，一枚硬幣由桌邊水平彈出，另一枚由直尺上垂直下落">
+              <figcaption>硬幣 X 水平拋出，硬幣 Y 由靜止下落</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p>固定手機，由側面用慢動作拍下兩枚硬幣的運動。</p>
+              <p class="lead">在同一格畫面中，比較 X 和 Y 由起點下降的距離。</p>
+              <p class="fragment takeaway">若同高、同時開始，且垂直初速度皆接近 0，兩枚硬幣約在同一高度。</p>
+              <a class="back-link" href="#/recap">返回小結</a>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>選用，約 6–8 分鐘。用桌邊、直尺、兩枚硬幣及固定的手機。先找兩枚硬幣開始下落的一格，再在同一幀比較由各自起點下降的距離。若 Y 起點稍低，應比較下降量。實拍的釋放時差、視差或垂直初速度偏差都會影響畫面。</p>
+        </aside>
+      </section>
+
+      <section id="ramps" aria-labelledby="ramps-title">
+        <div class="slide-frame">
+          <header class="slide-head">
+            <p class="topic">手機小實驗 · 原投影片 p.27–30</p>
+            <h2 id="ramps-title">比較兩個乒乓球的水平運動</h2>
+          </header>
+          <div class="split media-split">
+            <figure class="media-plate ramp-figure">
+              <img src="media/ramps.webp" alt="兩條相同斜道上下對齊，上方在桌邊、下方在地面，用手機從側面拍攝">
+              <figcaption>兩條斜道相同，出口上下對齊</figcaption>
+            </figure>
+            <div class="copy-stack">
+              <p>兩球由兩條斜道的同一相對位置開始滾下。</p>
+              <p class="lead">離開斜道後、上方球着地前，比較同一格的水平位置。</p>
+              <p class="fragment takeaway">若兩球離開斜道時的水平速度相同，且摩擦等效應很小，水平位置應接近對齊。</p>
+              <a class="back-link" href="#/recap">返回小結</a>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>選用，約 6–8 分鐘。上方斜道讓乒乓球越過桌邊進入空中，下方球在地面滾動。找兩球同時離開斜道的位置和時刻，至上方球着地前比較。地面摩擦、離開斜道時的速率差、運動方向和拍攝視角都可能令實拍有偏差。引導學生講明比較的是水平分量。</p>
+        </aside>
+      </section>
+    </div>
+  </div>
+  <script src="vendor/reveal/reveal.js"></script>
+  <script src="vendor/reveal/notes.js"></script>
+  <script src="projectile.js"></script>
+</body>
+</html>

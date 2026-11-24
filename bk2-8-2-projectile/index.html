@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172f32">
+  <title>8.2 分析拋體運動</title>
+  <link rel="stylesheet" href="vendor/reveal/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section id="intro" class="cover" aria-labelledby="intro-title">
+        <div class="cover-layout">
+          <div>
+            <p class="cover-number">第 8.2 節</p>
+            <h1 id="intro-title">分析<br>拋體運動</h1>
+            <nav class="chapter-menu" aria-label="選擇講授部分">
+              <a href="#/oblique">開始本堂</a>
+              <a href="#/measure-flight">足球 VAR</a>
+              <a href="#/flight-lab">飛行實驗場</a>
+              <a href="#/extra-material">補充材料</a>
+            </nav>
+          </div>
+          <figure class="cover-figure">
+            <img src="media/football.webp" alt="原例題圖，足球以 45 m/s 及水平線以上 30 度從 X 點射出">
+            <figcaption><i>H</i> 最大高度　<i>t</i> 飛行時間　<i>R</i> 水平射程</figcaption>
+          </figure>
+        </div>
+        <aside class="notes"><p>觀課從「開始本堂」進入工作紙 p.4（原 PDF 第 23 頁）。簡報第 2–6 頁的水平射出內容對應已教部分，可用作複習。本堂依次做 p.4 的斜角射出、p.5 鞏固 3、p.6 飛行實驗場試玩、p.7–8 足球 VAR、p.9 同高起落與實驗、笠射例題和 p.10 鞏固 6。例題取 g = 9.81 m/s²，模擬取 g = 10 m/s²。</p></aside>
+      </section>
+
+      <section id="horizontal" aria-labelledby="horizontal-title">
+        <div class="frame">
+          <header><p class="topic">水平射出的拋體 · 工作紙 p.2 A1</p><h2 id="horizontal-title">同一個時間，分兩個方向</h2></header>
+          <div class="split movie-layout">
+            <figure class="film">
+              <video data-demo src="media/horizontal.mp4" poster="media/horizontal-poster.webp" muted playsinline controls preload="metadata" aria-label="Manim 水平拋射示範。水平速度箭嘴保持相同長度，垂直速度箭嘴向下並逐漸加長。"></video>
+              <figcaption><span>Manim｜速度分量</span><button type="button" data-replay>↻ 重播</button></figcaption>
+            </figure>
+            <div class="stack">
+              <p class="lead">沿水平方向拋出時，垂直初速度是多少？</p>
+              <p class="fragment rule"><strong>向右為正</strong><span class="math">u<sub>x</sub> = u，a<sub>x</sub> = 0</span></p>
+              <p class="fragment rule warm"><strong>向下為正</strong><span class="math">u<sub>y</sub> = 0，a<sub>y</sub> = g</span></p>
+              <p class="muted">假設空氣阻力可略去不計。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 4 分鐘。指水平箭嘴在整段運動中維持等長，讓學生先填工作紙 p.2 A1。這頁取向下為正，所以下落的位移和加速度可寫正值。問「水平速度改變會否改變同高出發至地面的時間？」要求以垂直分量解釋。</p></aside>
+      </section>
+
+      <section id="horizontal-example" aria-labelledby="horizontal-example-title">
+        <div class="frame">
+          <header><p class="topic">例題 2 · 水平與垂直位移</p><h2 id="horizontal-example-title">知道水平距離，怎樣求下落量？</h2></header>
+          <p class="lead">小球以 8.0 m/s 水平拋出。觀測線在起點右方 2.4 m。小球多久到達觀測線？當時下落了多少？</p>
+          <div class="two-cards">
+            <div class="fragment result-card"><h3>水平方向求時間</h3><p class="math">s<sub>x</sub> = u<sub>x</sub>t<br>2.4 = 8.0t</p><strong>t = 0.30 s</strong></div>
+            <div class="fragment result-card warm"><h3>向下為正，求垂直位移</h3><p class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²<br>s<sub>y</sub> = 0 + ½(9.81)(0.30)²</p><strong>向下 0.441 m</strong></div>
+          </div>
+          <p class="fragment takeaway">到達觀測線的時間，亦是小球向下加速的時間。</p>
+        </div>
+        <aside class="notes"><p>約 4 分鐘。保留原例題 2 的數據，以小球經過觀測線表達。先讓學生寫水平式子求 t，再代入垂直式子。追問觀測線上與起點同高的記號相對位置。球會經過記號下方。</p></aside>
+      </section>
+
+      <section id="helicopter" aria-labelledby="helicopter-title">
+        <div class="frame">
+          <header><p class="topic">例題 3 · 拋體的末速率</p><h2 id="helicopter-title">直升機倒水後，水怎樣移動？</h2></header>
+          <div class="split">
+            <figure class="plate"><img src="media/helicopter.webp" alt="直升機在 30 米高處以 40 m/s 向右飛行，水從 P 點沿曲線落向地面"><figcaption>原投影片 p.12</figcaption></figure>
+            <div class="stack compact">
+              <p>水從離地 <strong>30 m</strong> 處倒出，離開時的水平速率是 <strong>40 m/s</strong>。取向右和向下為正。</p>
+              <ol class="answers worked-steps">
+                <li class="fragment">水到達地面時，直升機在它的<strong>正上方</strong>，因為兩者水平速度相同。</li>
+                <li class="fragment"><span class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²</span><br><span class="math">30 = 0 + ½(9.81)t²，t ≈ 2.47 s</span><br><span class="math">s<sub>x</sub> = u<sub>x</sub>t = 40t ≈ <strong>98.9 m</strong></span></li>
+                <li class="fragment"><span class="math">v<sub>y</sub>² = u<sub>y</sub>² + 2a<sub>y</sub>s<sub>y</sub> = 0² + 2(9.81)(30)</span><br><span class="math">v = √(v<sub>x</sub>² + v<sub>y</sub>²) = √(40² + 588.6) ≈ <strong>46.8 m/s</strong></span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 5 分鐘。直升機維持恆定水平速度，模型忽略水散開和空氣阻力。每次揭示前，問學生要用哪個方向。若學生將 40 和 24.3 直接相加，請畫互相垂直的兩個分量再合成。延伸按原 PDF 第 17 頁，若速度降低，倒水時離火場的水平距離較短。</p></aside>
+      </section>
+
+      <section id="classwork-2" aria-labelledby="classwork-2-title">
+        <div class="frame">
+          <header><p class="topic">工作紙 p.2–3 · 鞏固 2</p><h2 id="classwork-2-title">由 A 到 B，用哪個分量先求時間？</h2></header>
+          <div class="split">
+            <figure class="plate"><img src="media/workbook-carnival.webp" alt="工作紙原圖，小球從 A 水平拋出，B 在右方 3 米及下方 0.4 米"><figcaption>由 A 水平拋出，在 B 擊中目標</figcaption></figure>
+            <div class="stack">
+              <p>求飛行時間、初速率和在 B 點的速度。取向下和向右為正。</p>
+              <ol class="answers worked-steps">
+                <li class="fragment"><span class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²</span><br><span class="math">0.40 = 0 + ½(9.81)t²，<strong>t = 0.286 s</strong></span></li>
+                <li class="fragment"><span class="math">s<sub>x</sub> = u<sub>x</sub>t，u = u<sub>x</sub> = 3.0 ÷ t ≈ <strong>10.5 m/s</strong></span></li>
+                <li class="fragment"><span class="math">v<sub>y</sub>² = u<sub>y</sub>² + 2a<sub>y</sub>s<sub>y</sub> = 0² + 2(9.81)(0.40)</span><br><span class="math">v = √(v<sub>x</sub>² + v<sub>y</sub>²) ≈ √(10.5² + 2.80²) ≈ <strong>10.9 m/s</strong></span><br><span class="math">tan θ = v<sub>y</sub> ÷ v<sub>x</sub> ≈ 2.80 ÷ 10.5</span>，水平線以下 <strong>14.9°</strong>。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>先給約 4 分鐘個人計算。要求學生在答案旁寫是使用水平還是垂直資料。速度須寫方向，角度用 tan θ = v_y/v_x 核對。下一頁比較抵達地面和抵達前方垂直面的時間條件。</p></aside>
+      </section>
+
+      <section id="quick-2" aria-labelledby="quick-2-title">
+        <div class="frame">
+          <header><p class="topic">水平射出 · 快測 2</p><h2 id="quick-2-title">題目以甚麼事件停止計時？</h2></header>
+          <div class="split">
+            <div class="stack">
+              <div class="prompt-block"><h3>1　到達地面</h3><p>離地高度和水平初速率，哪項影響時間？</p><p class="fragment check">已知 g，只由離地高度決定。</p></div>
+              <div class="prompt-block"><h3>2　到達前方牆面</h3><p>球能到達牆面。哪些量決定撞牆的時間？</p><p class="fragment check">水平距離 d 和水平初速率 u<sub>x</sub>。</p></div>
+            </div>
+            <div class="stack compact">
+              <figure class="plate small-image"><img src="media/compare-xy.webp" alt="X 和 Y 在不同高度由同一條垂直線水平射出，最後都在 R 點着地，X 較高"></figure>
+              <p><strong>3　同一落點 R</strong>　比較時間、加速度和着地時各速度分量。</p>
+              <p class="fragment takeaway">X 飛得較久、着地垂直速率較大。兩球加速度相同。Y 的水平速率較大。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 4 分鐘。第 3 題先比下落高度，確定 X 用時較長；兩球經過相同水平距離，所以 Y 水平速率較大。上一堂若已完成水平部分，觀課直接由下一頁開始。</p></aside>
+      </section>
+
+      <section id="oblique" aria-labelledby="oblique-title">
+        <div class="frame">
+          <header><p class="topic">以斜角射出的拋體 · 工作紙 p.4 B1</p><h2 id="oblique-title">斜向上射出，怎樣分解初速度？</h2></header>
+          <div class="split">
+            <figure class="plate graph"><canvas width="650" height="376" data-diagram="oblique" role="img" aria-label="初速度 u 與水平線夾角 θ，分成向右的 u x 和向上的 u y。"></canvas><figcaption>投射角 θ 由水平線量起</figcaption></figure>
+            <div class="stack">
+              <p class="lead">以向右和向上為正。先在草稿上畫速度三角形。</p>
+              <p class="fragment rule"><strong>水平方向</strong><span class="math">u<sub>x</sub> = u cos θ，a<sub>x</sub> = 0</span></p>
+              <p class="fragment rule warm"><strong>垂直方向</strong><span class="math">u<sub>y</sub> = u sin θ，a<sub>y</sub> = −g</span></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>0–5 分鐘。先喚起水平拋射的 u_y = 0。斜向上投射時，請學生在工作紙 p.4 畫速度三角形並寫 u_x、u_y、a_x、a_y。若 sin、cos 對調，請指出靠近投射角的直角邊。</p></aside>
+      </section>
+
+      <section id="same-height-velocity" aria-labelledby="same-height-velocity-title">
+        <div class="frame">
+          <header><p class="topic">速度與加速度 · 工作紙 p.4 B2–3</p><h2 id="same-height-velocity-title">同高位置和最高點，速度有何分別？</h2></header>
+          <div class="split">
+            <figure class="plate graph"><canvas width="650" height="376" data-diagram="equal-height" role="img" aria-label="拋物線上 A 和 B 同高，速度箭嘴等長而分別朝右上、右下；最高點速度箭嘴向右。"></canvas></figure>
+            <div class="stack">
+              <p class="lead">比較 A、B 的速率和方向，再看最高點。</p>
+              <p class="fragment takeaway"><strong>同高的 A、B</strong><br>速率相同，與水平線的夾角相同，垂直分量方向相反。</p>
+              <p class="fragment takeaway warm"><strong>最高點</strong><br><span class="math">v<sub>y</sub> = 0，v<sub>x</sub> = u<sub>x</sub></span>，加速度仍垂直向下。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>緊接初速度分解，完成工作紙 p.4 B2–3。指出處於同一高度時速率相同，兩處的速度方向可以不同。請學生在最高點指出 v_y = 0、v_x 保持不變和 a_y = −g，再進入排球題。</p></aside>
+      </section>
+
+      <section id="classwork-3" aria-labelledby="classwork-3-title">
+        <div class="frame">
+          <header><p class="topic">工作紙 p.5 · 鞏固 3</p><h2 id="classwork-3-title">排球第一次到達 2.8 m</h2></header>
+          <div class="split narrow-figure">
+            <figure class="plate"><img src="media/workbook-volleyball.webp" alt="工作紙的排球圖，A 點離地 2 米，球以 6 m/s 及向上 75 度飛出"><figcaption>A 點離地 2.0 m</figcaption></figure>
+            <div class="stack compact">
+              <p>初速率 <strong>6.0 m/s</strong>，投射角為水平線以上 <strong>75°</strong>。求到最高點的時間，再求第一次到達 2.8 m 高時的水平距離。</p>
+              <p class="fragment equation"><span class="math">v<sub>y</sub> = u<sub>y</sub> + a<sub>y</sub>t<br>0 = 6 sin 75° − 9.81t</span><strong>t ≈ 0.591 s</strong></p>
+              <div class="fragment equation warm"><p class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²</p><p class="math">0.80 = (6 sin 75°)t + ½(−9.81)t²</p><p>取較早的解 <strong>t ≈ 0.160 s</strong>。</p><p class="math">s<sub>x</sub> = u<sub>x</sub>t = (6 cos 75°)t ≈ <strong>0.248 m</strong></p></div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>對照工作紙 p.5。先做 (a)，讓學生寫下最高點的 v_y = 0，再列式求時間。(b) 可用兩個到達同一高度的時刻說明「第一次到達」的意思。若要控制觀課時間，先核對 (a)，把 (b) 留作鞏固。</p></aside>
+      </section>
+
+      <section id="flight-lab" aria-labelledby="flight-lab-title">
+        <div class="frame simulation-frame">
+          <header><p class="topic">同高起落 · 第 1 部分 · 工作紙 p.6</p><h2 id="flight-lab-title">飛行實驗場｜拉放試玩</h2></header>
+          <iframe class="lab-embed" title="青羽島飛行實驗場。拉放試玩，從軌跡上辨認三個物理量。" src="simulation/flight-lab.html" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <aside class="notes"><p>拉放一次。讓學生在工作紙 p.6 寫下 H、R、t。請一位學生指出量度飛行時間的起點和終點，再分別指出水平射程的水平位移與最大高度的垂直位移。填完三個定義便進入足球 VAR。</p></aside>
+      </section>
+
+      <section id="measure-flight" aria-labelledby="measure-flight-title">
+        <div class="frame">
+          <header><p class="topic">在同一水平投擲和着陸 · 足球例題 4 · 工作紙 p.7–8</p><h2 id="measure-flight-title">足球 VAR 定格</h2></header>
+          <div class="split movie-layout">
+            <figure class="film">
+              <video data-demo src="media/football-flight.mp4" poster="media/football-flight-poster.webp" muted playsinline controls preload="metadata" aria-label="Manim 動畫。足球由 X 飛到同高落點，在最高點標出 H，着地後標出水平射程 R。"></video>
+              <figcaption><span>Manim｜垂直比例放大的示意圖</span><div class="film-actions"><button type="button" data-advance>播放</button><button type="button" data-replay>↻ 重播</button></div></figcaption>
+              <div class="freeze-controls" role="group" aria-label="選擇足球定格">
+                <button type="button" data-freeze="0.15" aria-pressed="false">① 離腳後</button>
+                <button type="button" data-freeze="3.30" aria-pressed="false">② 最高點</button>
+                <button type="button" data-freeze="6.30" aria-pressed="false">③ 着地前</button>
+              </div>
+            </figure>
+            <div class="stack compact">
+              <figure class="plate var-kick"><img src="media/football.webp" alt="球員在 X 點踢足球，初速度 45 米每秒，方向在水平線以上 30 度。"></figure>
+              <p>足球以 <strong>45 m/s</strong>、水平線以上 <strong>30°</strong> 踢出，在與起點同一高度着地。空氣阻力可略去不計。</p>
+              <p class="takeaway">每次定格，各畫一張<strong>隔離體圖</strong>和<strong>速度圖</strong>。畫完按「繼續播放」。</p>
+
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>預留約 8 分鐘。先用踢球圖交代題目情境，指認 X 點和初速度。動畫自動停在離腳後、最高點和着地前。學生每次在工作紙 p.7–8 分開畫力與速度，教師待學生完成才按「繼續播放」。接下來逐步核對圖和列式。</p></aside>
+      </section>
+
+      <section id="football-launch" aria-labelledby="football-launch-title">
+        <div class="frame">
+          <header><p class="topic">足球例題 4 · 第 1 步 · 工作紙 p.7</p><h2 id="football-launch-title">離腳一刻，求初速度分量</h2></header>
+          <div class="calc-layout">
+            <div class="stack compact">
+              <p>核對剛才的<strong>隔離體圖</strong>和<strong>速度圖</strong>。已知 <span class="math">u = 45 m/s，θ = 30°</span>。</p>
+              <div class="drawings">
+                <figure class="drawing"><figcaption>隔離體圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="force" width="290" height="200" role="img" aria-label="足球一離腳後，只受向下的重力 mg。"></canvas></div></figure>
+                <figure class="drawing"><figcaption>速度圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="launch-velocity" width="290" height="200" role="img" aria-label="初速度 u 指向右上，水平分量向右，垂直分量向上。"></canvas></div></figure>
+              </div>
+            </div>
+            <div class="steps">
+              <p class="lead">水平和垂直分量各是多少？</p>
+              <p class="fragment equation"><span class="math">u<sub>x</sub> = u cos θ = 45 cos 30°</span><strong>39.0 m/s 向右</strong></p>
+              <p class="fragment equation warm"><span class="math">u<sub>y</sub> = u sin θ = 45 sin 30°</span><strong>22.5 m/s 向上</strong></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 3 分鐘。揭示答案，核對剛才畫的兩圖。球員的腳已離開球，所以只畫重力。再讓學生先自行分解初速度，使用 cos 求水平分量。計算時保留未截尾數值至最後一步。</p></aside>
+      </section>
+
+      <section id="football-height" aria-labelledby="football-height-title">
+        <div class="frame">
+          <header><p class="topic">足球例題 4 · 第 2 步 · 工作紙 p.7</p><h2 id="football-height-title">到最高點，求最大高度 H</h2></header>
+          <div class="calc-layout">
+            <div class="stack compact">
+              <p>核對最高點的<strong>隔離體圖</strong>和<strong>速度圖</strong>。</p>
+              <div class="drawings">
+                <figure class="drawing"><figcaption>隔離體圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="force" width="290" height="200" role="img" aria-label="最高點仍只受向下的重力 mg。"></canvas></div></figure>
+                <figure class="drawing"><figcaption>速度圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="apex-velocity" width="290" height="200" role="img" aria-label="最高點垂直速度分量為零，速度向右。"></canvas></div></figure>
+              </div>
+            </div>
+            <div class="steps">
+              <p class="lead">由 X 到最高點，哪個速度分量等於零？</p>
+              <p class="fragment equation warm"><span class="math">v<sub>y</sub> = 0，u<sub>y</sub> = 22.5 m/s，a<sub>y</sub> = −g</span></p>
+              <div class="fragment equation"><p class="math">v<sub>y</sub>² = u<sub>y</sub>² + 2a<sub>y</sub>s<sub>y</sub></p><p class="math">0 = 22.5² − 2(9.81)H</p><strong>H = 25.8 m</strong></div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 4 分鐘。要求學生先指出 H 的量度起點，接着寫 v_y=0。若學生寫整個速度等於零，請他指速度圖仍在的水平箭嘴。力圖的重力與射出後一樣。</p></aside>
+      </section>
+
+      <section id="football-time" aria-labelledby="football-time-title">
+        <div class="frame">
+          <header><p class="topic">足球例題 4 · 第 3 步 · 工作紙 p.8</p><h2 id="football-time-title">同高着地，求總飛行時間 t</h2></header>
+          <div class="calc-layout">
+            <div class="stack compact">
+              <p>核對<strong>着地前一刻</strong>的兩張圖。落點與 X 同高。</p>
+              <div class="drawings">
+                <figure class="drawing"><figcaption>隔離體圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="force" width="290" height="200" role="img" aria-label="着地前仍只受向下的重力 mg。"></canvas></div></figure>
+                <figure class="drawing"><figcaption>速度圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="landing-velocity" width="290" height="200" role="img" aria-label="着地前速度朝右下，水平分量向右，垂直分量向下。"></canvas></div></figure>
+              </div>
+            </div>
+            <div class="steps">
+              <p class="lead">由 X 到落點，哪個位移等於零？</p>
+              <p class="fragment equation warm"><span class="math">s<sub>y</sub> = 0，u<sub>y</sub> = 22.5 m/s，a<sub>y</sub> = −g</span></p>
+              <div class="fragment equation"><p class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²</p><p class="math">0 = 22.5t + ½(−9.81)t²</p><strong>t = 4.59 s</strong><small class="muted">另一個解 t = 0 對應離腳的一刻。</small></div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 4 分鐘。先在簡圖指出 X 和落點同高。若學生用 v_y=0，請他把最高點和落點分別指出。問 t=0 是哪個位置。兩根都對應同一高度，題目要求的是第二次。</p></aside>
+      </section>
+
+      <section id="football-range" aria-labelledby="football-range-title">
+        <div class="frame">
+          <header><p class="topic">足球例題 4 · 第 4 步 · 工作紙 p.8</p><h2 id="football-range-title">沿水平方向，求射程 R</h2></header>
+          <div class="calc-layout">
+            <div class="stack compact">
+              <p>沿用着地前的兩張圖，在<strong>速度圖</strong>圈出求射程所用的分量。</p>
+              <div class="drawings">
+                <figure class="drawing"><figcaption>隔離體圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="force" width="290" height="200" role="img" aria-label="在空中重力向下，沒有水平合力。"></canvas></div></figure>
+                <figure class="drawing"><figcaption>速度圖</figcaption><div class="sketch"><canvas class="fragment" data-fragment-index="0" data-diagram="range-velocity" width="290" height="200" role="img" aria-label="着地前速度向右下，求射程用保持不變的水平速度分量。"></canvas></div></figure>
+              </div>
+            </div>
+            <div class="steps">
+              <p class="lead">整段飛行的水平速率是多少？</p>
+              <p class="fragment equation"><span class="math">a<sub>x</sub> = 0，v<sub>x</sub> = u<sub>x</sub> ≈ 39.0 m/s</span></p>
+              <div class="fragment equation"><p class="math">R = s<sub>x</sub> = u<sub>x</sub>t</p><p class="math">R ≈ 39.0 × 4.59</p><strong>R = 179 m</strong></div>
+            </div>
+          </div>
+          <a class="jump-link" href="#/level">同高起落的特點 →</a>
+        </div>
+        <aside class="notes"><p>請學生用完整句子解釋為何用 u_x 乘總飛行時間。完成工作紙 p.8 後翻到 p.9，用剛才足球的軌跡引入對稱性。稍後回到飛行實驗場，用 R = u_xt 解釋兩次試射為甚麼落在同一處。</p></aside>
+      </section>
+
+      <section id="level" aria-labelledby="level-title">
+        <div class="frame">
+          <header><p class="topic">在同一水平投擲和着陸 · 工作紙 p.9 (a)、(b)</p><h2 id="level-title">把同高起落的路徑分成兩半</h2></header>
+          <div class="split">
+            <figure class="plate square-media"><img src="media/symmetry.webp" alt="原教材軌跡圖，起點和落點同高，對稱軸 AB 穿過最高點"><figcaption>原投影片 p.62</figcaption></figure>
+            <div class="stack">
+              <p class="lead">指出對稱軸。由起點到最高點，用了全部飛行時間的多少？</p>
+              <p class="fragment takeaway">軌跡以穿過最高點的垂直線為對稱軸。上升和下降時間相同。</p>
+              <p class="fragment equation"><span class="math">v<sub>y</sub> = u<sub>y</sub> + a<sub>y</sub>t<sub>上</sub><br>0 = 22.5 − 9.81t<sub>上</sub></span><strong>t = 2t<sub>上</sub> ≈ 4.59 s</strong></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>請學生指着工作紙 p.9 的圖指出對稱軸，回答上升和下降時間的關係。可用 22.5 ÷ 9.81 求足球上升時間，再用同高起落的對稱性核對 p.8 的 4.59 s。接着比較固定角度時改變初速率的效果。</p></aside>
+      </section>
+
+      <section id="flight-study" aria-labelledby="flight-study-title">
+        <div class="frame simulation-frame">
+          <header><p class="topic">同高起落 · 第 2 部分 · 工作紙 p.9 (c)</p><h2 id="flight-study-title">飛行實驗場｜實驗比較</h2></header>
+          <iframe class="lab-embed" title="青羽島飛行實驗場。固定角度，實驗比較不同初速率。" src="simulation/flight-lab.html#study" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <aside class="notes"><p>對照工作紙 p.9 (c)。把投射角調至 35° 並鎖定。先口頭問「初速率加倍，哪個量會變成約兩倍？」先後試 8.0、16.0 m/s，逐一顯示三項讀數。請學生填寫最大高度和射程的變化，再口頭比較飛行時間。H、R 約變成 4 倍，t 約變成 2 倍。下一頁可用來揭示原因。</p></aside>
+      </section>
+
+      <section id="vary-speed" aria-labelledby="vary-speed-title">
+        <div class="frame">
+          <header><p class="topic">同高起落 · 固定投射角 · 工作紙 p.9 (c)</p><h2 id="vary-speed-title">初速率加倍，三個量怎樣變？</h2></header>
+          <div class="split movie-layout">
+            <figure class="film">
+              <video data-demo src="media/speed.mp4" poster="media/speed-poster.webp" muted playsinline controls preload="metadata" aria-label="Manim 動畫，同高起落，兩球同以 35 度發射，8 m/s 的球先着地，16 m/s 的球飛得更高更遠。"></video>
+              <figcaption><span>Manim｜兩次發射角均為 35°</span><button type="button" data-replay>↻ 重播</button></figcaption>
+            </figure>
+            <div class="stack compact">
+              <p>比較 <strong>8 m/s</strong> 和 <strong>16 m/s</strong>，在同一水平射出和着地。</p>
+              <p class="fragment rule"><strong>飛行時間 t</strong><span>變為 2 倍，因為 u<sub>y</sub> 加倍。</span></p>
+              <p class="fragment rule warm"><strong>最大高度 H</strong><span>變為 4 倍，因為 H 隨 u<sub>y</sub>² 改變。</span></p>
+              <p class="fragment rule"><strong>水平射程 R</strong><span>變為 4 倍，因為 u<sub>x</sub> 和 t 都加倍。</span></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>完成模擬試射後，可用本頁簡短核對。初速率加倍，u_x 和 u_y 各加倍，所以 t 加倍、H 和 R 各變成 4 倍。學生填寫工作紙 p.9 (c)。接下來固定初速率，改動角度。</p></aside>
+      </section>
+
+      <section id="flight-challenge" aria-labelledby="flight-challenge-title">
+        <div class="frame simulation-frame">
+          <header><p class="topic">同高起落 · 第 3 部分 · 工作紙 p.9 (d)</p><h2 id="flight-challenge-title">飛行實驗場｜落區挑戰</h2></header>
+          <iframe class="lab-embed" title="青羽島飛行實驗場。落區挑戰：同一落區、兩條路徑。" src="simulation/flight-lab.html#challenge" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <aside class="notes"><p>對照工作紙 p.9 (d)。保持 12 m/s，以 30° 完成情景一，再按「用同一角度試情景二」。觀察碰到石牆後，由老師口頭問「提高角度後，能否落在同一處？」試一個學生建議，再用 60° 完成情景二。按「同時重播兩條路徑」，低弧線在 1.20 s 先着地，高弧線在 2.08 s 後着地，R 都是 12.47 m。學生先用 R = u_xt 解釋，再看後兩頁。時間不足時直接試 60°。</p></aside>
+      </section>
+
+      <section id="two-routes" aria-labelledby="two-routes-title">
+        <div class="frame">
+          <header><p class="topic">同高起落 · 固定初速率</p><h2 id="two-routes-title">兩條路徑，為甚麼可以有相同射程？</h2></header>
+          <div class="split movie-layout">
+            <figure class="film">
+              <video data-demo src="media/same-landing.mp4" poster="media/same-landing-poster.webp" muted playsinline controls preload="metadata" aria-label="Manim 動畫，30 度和 60 度由同一點同時射出，低弧線在 1.20 秒先着地，高弧線在 2.08 秒後着地，兩者射程為 12.47 米。"></video>
+              <figcaption><span>Manim｜初速率均為 12 m/s</span><button type="button" data-replay>↻ 重播</button></figcaption>
+            </figure>
+            <div class="stack compact">
+              <p class="lead">比較低弧線與高弧線的飛行時間和水平速率。</p>
+              <p class="fragment takeaway">60° 的 <span class="math">u<sub>x</sub></span> 較小，<i>t</i> 較長。兩條路徑的 <span class="math">u<sub>x</sub>t</span> 相同。</p>
+              <p class="fragment rule"><strong>互餘投射角</strong><span>同初速率、同高起落時，<span class="math">θ</span> 和 <span class="math">90° − θ</span> 的射程相同。</span></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>雙路徑已在落區挑戰中重播時，只需揭示重點。60° 的水平初速度較小、飛行時間較長，兩者的 u_x t 相同。請學生口頭解釋 30° 和 60° 同射程，再回到工作紙 p.9 (d) 作較廣的角度比較。</p></aside>
+      </section>
+
+      <section id="vary-angle" aria-labelledby="vary-angle-title">
+        <div class="frame">
+          <header><p class="topic">同高起落 · 固定初速率 · 工作紙 p.9 (d)</p><h2 id="vary-angle-title">角度越大，射程一定越遠嗎？</h2></header>
+          <div class="split">
+            <figure class="plate graph"><canvas width="650" height="376" data-diagram="angle-range" role="img" aria-label="固定初速率時，相對射程由零度的零增加至 45 度的最大值，再下降至 90 度的零。30 度和 60 度的射程相同。"></canvas><figcaption>同高起落時，水平射程和投射角的關係</figcaption></figure>
+            <div class="stack">
+              <p class="fragment rule warm"><strong>H 和 t</strong><span>角度增大，垂直初速度增大，H 和 t 都增加。</span></p>
+              <p class="fragment rule"><strong>R</strong><span>0° 至 45° 增加，45° 至 90° 減少。</span></p>
+              <p class="fragment takeaway">回看 30° 的足球。若只提高投射角，<strong>R 要看提高至多少度</strong>。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>在工作紙 p.9 (d) 記錄趨勢。讓學生在圖上找出 30°、60° 的等射程位置，再讀出 45° 的最大射程。由 0° 到 90°，固定初速率時，角度增加令 u_y 增加，H 和 t 增加。工作紙 p.12 鞏固 7 的射程公式推導留作補充。</p></aside>
+      </section>
+
+      <section id="quick-4" aria-labelledby="quick-4-title">
+        <div class="frame">
+          <header><p class="topic">同高起落 · 快測 4</p><h2 id="quick-4-title">用同高條件解釋你的答案</h2></header>
+          <div class="two-cards">
+            <div class="result-card"><h3>固定初速率</h3><p>哪個投射角令射程最遠？<br>哪個投射角令最大高度最高？</p><p class="fragment"><strong>45° 最遠，90° 最高。</strong></p></div>
+            <div class="result-card warm"><h3>比較上下行程</h3><p>比較路徑長度、所用時間、水平速率，以及垂直速率會否維持不變。</p><p class="fragment"><strong>路徑長度、所用時間相同，水平速率維持不變。</strong>垂直速率隨時間改變。</p></div>
+          </div>
+          <a class="jump-link" href="#/lob">例題 6｜足球笠射過守門員 →</a>
+        </div>
+        <aside class="notes"><p>有時間選一題作口頭核對。有學生認為角度越高必定越遠時，請他比較 30°、45° 和 60°。若時間較緊，直接去例題 6。</p></aside>
+      </section>
+
+      <section id="lob" aria-labelledby="lob-title">
+        <div class="frame">
+          <header><p class="topic">例題 6 · 對稱軌跡的特性</p><h2 id="lob-title">足球笠射過守門員</h2></header>
+          <div class="split">
+            <figure class="plate"><img src="media/lob.webp" alt="原例題圖，足球以 60 度從 A 踢出，飛過最高點下方的守門員，在同高的 B 點着地"><figcaption>A、B 同高，守門員在最高點正下方</figcaption></figure>
+            <div class="stack compact">
+              <p>足球以 <strong>60°</strong> 射出，A 至 B 共用 <strong>1.4 s</strong>。</p>
+              <ol class="answers">
+                <li class="fragment"><span class="math">v<sub>y</sub> = u<sub>y</sub> + a<sub>y</sub>t，0 = u<sub>y</sub> − 9.81(0.7)</span><br><span class="math">u<sub>y</sub> = u sin θ，u = 9.81(0.7) ÷ sin 60° ≈ <strong>7.93 m/s</strong></span>。</li>
+                <li class="fragment"><span class="math">s<sub>x</sub> = u<sub>x</sub>t = (u cos 60°)(0.7) ≈ <strong>2.78 m</strong></span>。</li>
+                <li class="fragment">着地前速度為 <strong>7.93 m/s，向右、水平線以下 60°</strong>。</li>
+                <li class="fragment">若改用 30°，球在相同水平位置較低，守門員更易接到。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>例題由簡報投影，銜接工作紙 p.10 的鞏固 6。先問球到守門員正上方要幾多秒，再用 1.4 ÷ 2 = 0.70 s 求初速率和水平距離。若有時間，才口頭延伸着地速度方向和改用 30° 的結果。</p></aside>
+      </section>
+
+      <section id="exit-ticket" aria-labelledby="exit-ticket-title">
+        <div class="frame">
+          <header><p class="topic">個人作答 · 工作紙 p.10</p><h2 id="exit-ticket-title">離堂小測｜鞏固 6</h2></header>
+          <p class="lead">獨立完成 (a) 和 (b)，寫出方程、代入及答案。</p>
+          <div class="two-cards">
+            <article class="result-card"><h3>(a) 投射角</h3><p>求足球射出方向與水平線的夾角。</p></article>
+            <article class="result-card warm"><h3>(b) 水平距離</h3><p>求 X 點與守門員所在的 Y 點之間的距離。</p></article>
+          </div>
+        </div>
+        <aside class="notes"><p>56–64 分鐘。收取個人作答。對稱性給 u = 6 m/s，則 6 sin θ − 9.81 × 1.2 = −6 sin θ，θ = 78.8°。上升時間 0.60 s，XY = 6 cos θ × 0.60 = 0.698 m。用未截尾的角度計算。檢視學生是否分清初、末垂直速度的符號和只到最高點的時間。</p></aside>
+      </section>
+
+      <section id="recap" aria-labelledby="recap-title">
+        <div class="frame">
+          <header><p class="topic">8.2 小結</p><h2 id="recap-title">先定終點條件，再選方程</h2></header>
+          <div class="recap-list">
+            <div><h3>最高點</h3><p class="math">v<sub>y</sub> = 0</p><p>用垂直運動求 H。</p></div>
+            <div><h3>同高着地</h3><p class="math">s<sub>y</sub> = 0</p><p>用垂直運動求 t。</p></div>
+            <div><h3>整段飛行</h3><p class="math">a<sub>x</sub> = 0</p><p>用 R = u<sub>x</sub>t 求水平射程。</p></div>
+          </div>
+          <nav class="index-links" aria-label="返回主要教學段落"><a href="#/intro">章節目錄</a><a href="#/oblique">斜角射出</a><a href="#/football-launch">足球例題</a><a href="#/flight-lab">飛行實驗場</a></nav>
+        </div>
+        <aside class="notes"><p>64–67 分鐘。收齊離堂小測才用同一張軌跡圖總結。請學生口頭區分最高點的一刻、從起點到同高落點的一段，以及水平勻速。預留約 3 分鐘緩衝。</p></aside>
+      </section>
+
+      <section id="extra-material" aria-labelledby="extra-material-title">
+        <div class="frame">
+          <header><h2 id="extra-material-title">補充材料</h2></header>
+          <nav class="two-cards" aria-label="選擇補充課題">
+            <article class="result-card"><h3>水平射出</h3><a class="jump-link" href="#/horizontal">返回上堂複習</a></article>
+            <article class="result-card warm"><h3>斜角射出</h3><a class="jump-link" href="#/below-horizontal">向下投射及不同高度着地</a></article>
+            <article class="result-card"><h3>同高起落</h3><a class="jump-link" href="#/level">返回對稱軌跡</a></article>
+            <article class="result-card warm"><h3>能量轉換</h3><a class="jump-link" href="#/energy">位能與動能</a></article>
+          </nav>
+        </div>
+      </section>
+
+      <section id="below-horizontal" aria-labelledby="below-horizontal-title">
+        <div class="frame">
+          <header><p class="topic">例題 5 · 水平線以下的投射角</p><h2 id="below-horizontal-title">斜向下擊出的排球能越網嗎？</h2></header>
+          <div class="split">
+            <figure class="plate"><img src="media/volleyball-net.webp" alt="排球從離地 2.7 米向左下方 15 度、以 35 m/s 飛出，球網在 1.5 米外，網高 2.2 米"><figcaption>原投影片 p.44</figcaption></figure>
+            <div class="stack compact">
+              <p>取朝球網的水平方向為正，向上為正。先用 <strong>1.5 m</strong> 求到達球網的時間。</p>
+              <p class="fragment equation"><span class="math">s<sub>x</sub> = u<sub>x</sub>t<br>1.5 = (35 cos 15°)t，t ≈ 0.0444 s</span></p>
+              <div class="fragment equation warm"><p class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²</p><p class="math">s<sub>y</sub> = (−35 sin 15°)t + ½(−9.81)t² ≈ −0.412 m</p><p class="math">2.70 − 0.412 ≈ <strong>2.29 m</strong>，高於 2.20 m 的球網。</p></div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 5 分鐘。投射方向向左下，這頁把朝球網的水平方向取正。垂直向上為正，所以 u_y 和 a_y 都是負值。若沿用原 PPT 的向下為正，下降量會寫作正的 0.412 m，離地高度仍相同。</p></aside>
+      </section>
+
+      <section id="quick-3" aria-labelledby="quick-3-title">
+        <div class="frame">
+          <header><p class="topic">斜角射出 · 快測 3</p><h2 id="quick-3-title">到牆面和到地面，要看哪個分量？</h2></header>
+          <p class="lead">小球在離地 <i>h</i> 處斜向上拋出，分量為 <span class="math">u<sub>x</sub>、u<sub>y</sub></span>。</p>
+          <div class="two-cards">
+            <article class="result-card"><h3>抵達前方牆面</h3><p>球能到達距離 <i>d</i> 的牆。<br>哪些量決定時間？</p><p class="fragment math">s<sub>x</sub> = u<sub>x</sub>t<br>d = u<sub>x</sub>t，t = d ÷ u<sub>x</sub></p></article>
+            <article class="result-card warm"><h3>着地</h3><p>球落到地面。<br>哪些量決定時間？</p><p class="fragment"><span class="math">s<sub>y</sub> = u<sub>y</sub>t + ½a<sub>y</sub>t²<br>−h = u<sub>y</sub>t − ½gt²</span><br>由 <i>h</i>、<span class="math">u<sub>y</sub></span> 及 <i>g</i> 決定。</p></article>
+          </div>
+        </div>
+        <aside class="notes"><p>約 3 分鐘。問學生哪個已知位移決定所用方程。工作紙 p.11 可延伸鞏固 4 或 5。鞏固 5 的向下位移是 2 m，正確水平距離為 5.44 m。</p></aside>
+      </section>
+
+      <section id="energy" aria-labelledby="energy-title">
+        <div class="frame">
+          <header><p class="topic">拋體運動中的能量轉換 · 工作紙 p.12 D1</p><h2 id="energy-title">球升高時，動能轉成甚麼？</h2></header>
+          <div class="split movie-layout">
+            <figure class="film">
+              <video data-demo src="media/energy.mp4" poster="media/energy-poster.webp" muted playsinline controls preload="metadata" aria-label="Manim 動畫，小球飛行時動能柱減少再增加，重力勢能柱增加再減少，總機械能柱維持同一高度。"></video>
+              <figcaption><span>Manim｜以發射位置為勢能零點</span><button type="button" data-replay>↻ 重播</button></figcaption>
+            </figure>
+            <div class="stack">
+              <p class="lead">看三條能量柱。哪一條在飛行期間維持不變？</p>
+              <p class="fragment takeaway">空氣阻力可略去不計時，總機械能 <strong>KE + PE</strong> 保持不變。</p>
+              <p class="fragment rule warm"><strong>最高點</strong><span>重力勢能最大，動能最小。斜拋仍有水平速度。</span></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 4 分鐘。停在最高點，問還有哪個速度分量，再讓學生核對動能柱高於零。以發射位置作勢能零點。這個能量模型不包括空氣阻力及轉動。</p></aside>
+      </section>
+
+      <section id="energy-graph" aria-labelledby="energy-graph-title">
+        <div class="frame">
+          <header><p class="topic">能量與時間 · 工作紙 p.13 D2</p><h2 id="energy-graph-title">用線圖讀出最高點的能量</h2></header>
+          <div class="split">
+            <figure class="plate graph"><canvas width="650" height="376" data-diagram="energy-graph" role="img" aria-label="總機械能是水平線。重力勢能先增後減，動能先減後增，兩者峰谷同時出現在最高點。"></canvas><figcaption>同高起落 · 發射位置為勢能零點</figcaption></figure>
+            <div class="stack">
+              <p class="lead">在三條線中指出總機械能、動能和重力勢能。</p>
+              <p class="fragment rule warm"><strong>重力勢能的最大值</strong><span class="math">PE<sub>最大</sub> = mgH</span></p>
+              <p class="fragment rule"><strong>動能的最小值</strong><span class="math">KE<sub>最小</sub> = ½mu<sub>x</sub>²</span></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 3 分鐘。PE = mg s_y，而 s_y 跟時間是二次關係，所以 PE–t 為拋物線。KE 補足至恆定機械能，形狀反轉。請學生在工作紙 D2 填最高點兩項數值，並說明參考高度。</p></aside>
+      </section>
+
+      <section id="energy-example" aria-labelledby="energy-example-title">
+        <div class="frame">
+          <header><p class="topic">例題 7 · 利用能量守恆定律</p><h2 id="energy-example-title">求最高點離地高度及着地速率</h2></header>
+          <div class="split">
+            <figure class="plate"><img src="media/energy-start.webp" alt="物體從離地 3 米處，以 12 m/s 朝水平線以上 10 度射出"><figcaption>以地面為重力勢能零點</figcaption></figure>
+            <div class="stack compact">
+              <p>物體以 <strong>12 m/s</strong>、水平線以上 <strong>10°</strong> 射出，起點離地 <strong>3.0 m</strong>。</p>
+              <div class="fragment equation warm"><p class="math">½mv<sub>1</sub>² + mgh<sub>1</sub> = ½mv<sub>2</sub>² + mgh<sub>2</sub></p><p>約去 <i>m</i>，最高點的速率為 <span class="math">12 cos 10°</span>。</p><p class="math">½(12²) + 9.81(3.0) = ½(12 cos 10°)² + 9.81h</p><strong>h = 3.22 m</strong></div>
+              <div class="fragment equation"><p class="math">着地時，h<sub>2</sub> = 0。</p><p class="math">½(12²) + 9.81(3.0) = ½v²</p><strong>v = 14.2 m/s</strong></div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes"><p>約 5 分鐘。先問初始能量和最高點剩餘動能。質量可在能量方程兩邊約去。注意 3.22 m 是離地高度，距起點升高約 0.22 m。延伸可用垂直方程及水平分量合成核對兩個答案。</p></aside>
+      </section>
+
+      <section id="check-energy" aria-labelledby="check-energy-title">
+        <div class="frame">
+          <header><p class="topic">能量轉換 · 概念核對</p><h2 id="check-energy-title">最高點的動能會等於零嗎？</h2></header>
+          <p class="lead">以斜角向上投擲，取發射點的勢能為零。到達最高點時，比較動能與重力勢能。</p>
+          <div class="two-cards">
+            <div class="fragment result-card"><h3>動能最小</h3><p>水平速度仍存在。</p><strong class="math">KE = ½mu<sub>x</sub>² &gt; 0</strong></div>
+            <div class="fragment result-card warm"><h3>重力勢能最大</h3><p>總機械能仍包括動能。</p><strong class="math">PE = mgH &lt; ½mu²</strong></div>
+          </div>
+          <p class="fragment takeaway">若是垂直上拋，最高點的水平及垂直速度均為零，動能才是零。</p>
+        </div>
+        <aside class="notes"><p>約 2 分鐘。改編原 PDF 第 70–71 頁的斜拋選擇題。要求學生用速度分量解釋，然後用垂直上拋檢查條件何時改變。</p></aside>
+      </section>
+    </div>
+  </div>
+  <script src="vendor/reveal/reveal.js"></script>
+  <script src="vendor/reveal/notes.js"></script>
+  <script src="deck.js"></script>
+</body>
+</html>

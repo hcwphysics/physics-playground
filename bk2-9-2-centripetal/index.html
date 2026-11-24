@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9.2 向心力與向心加速度</title>
+
+  <link rel="stylesheet" href="vendor/package/dist/reset.css">
+  <link rel="stylesheet" href="vendor/package/dist/reveal.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section id="title" aria-labelledby="title-heading">
+        <div class="slide-frame cover">
+          <div class="content cover-layout" style="display: grid; grid-template-columns: 0.97fr 1.03fr; gap: 42px;">
+            <div class="cover-copy">
+              <p class="chapter">第 9.2 節</p>
+              <h1 id="title-heading">向心力與<br>向心加速度</h1>
+              <p class="cover-lead">物體以恆定的速率轉圈，<br>速度方向仍在改變。</p>
+            </div>
+            <figure class="cover-board vector-board">
+              <svg class="cover-orbit-map" viewBox="0 0 620 576" role="img" aria-label="月球繞地球的近似圓軌道。藍色速度箭嘴沿切線，橙色向心加速度箭嘴指向地球。">
+                <text x="30" y="45" fill="#eef4ef" font-size="24">月球繞地球</text>
+                <text x="590" y="44" fill="#b4c7d2" font-size="17" text-anchor="end">圓軌道示意</text>
+                <g transform="translate(310 276)">
+                  <circle r="168" fill="none" stroke="#829eaf" stroke-width="2"/>
+                  <image href="media/earth.png" x="-42" y="-42" width="84" height="84"/>
+                  <g class="orbit-rotor" style="--period:8s">
+                    <path d="M52 0 H156" stroke="#90a5b1" stroke-dasharray="5 6"/>
+                    <path d="M168 0 V-96 M158 -80 L168 -98 L178 -80" fill="none" stroke="#7dd9f3" stroke-width="5" stroke-linejoin="round"/>
+                    <path d="M168 0 H83 M99 -10 L81 0 L99 10" fill="none" stroke="#ffa985" stroke-width="5" stroke-linejoin="round"/>
+                    <image href="media/moon.png" x="151" y="-17" width="34" height="34"/>
+                  </g>
+                </g>
+              </svg>
+              <figcaption class="vector-key">
+                <p><span class="blue-key">v</span> 速度</p>
+                <p><span class="warm-key">a</span> 向心加速度</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 1 分鐘。指向封面的兩個箭嘴，口頭重溫速度包括量值和方向。確認學生能用「大小相同，方向可改變」描述兩個速度。銜接父親拉着孩子轉圈的情境。</p>
+        </aside>
+      </section>
+
+      <section id="centripetal-force" aria-labelledby="force-heading">
+        <div class="slide-frame">
+          <h2 id="force-heading">向心力</h2>
+          <div class="content" style="display: grid; grid-template-columns: 0.94fr 1.06fr; gap: 38px;">
+            <div class="story-copy">
+              <p class="lead">父親拉着兒子的雙手旋轉。</p>
+              <figure class="source-figure family-photo">
+                <img src="media/family.jpg" alt="父親拉着兒子的雙手，兒子的雙腳離地並繞着父親轉動。">
+                <figcaption><p>原教材圖</p></figcaption>
+              </figure>
+              <p>父親覺得兒子好像變得比平時重。</p>
+            </div>
+            <div class="story-copy">
+              <figure class="source-figure">
+                <svg class="force-diagram" viewBox="0 0 660 326" role="img" aria-labelledby="force-diagram-title force-diagram-desc">
+                  <title id="force-diagram-title">兒子（物體 Y）的隔離體圖</title>
+                  <desc id="force-diagram-desc">以兒子為物體 Y。父親施的力向右上，兒子的重量向下。父親施力的向上分量和重量相等，水平分量向右指向圓心。</desc>
+                  <defs>
+                    <marker id="actual-force-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                      <path d="M0 0L10 5L0 10Z" fill="#15283b"/>
+                    </marker>
+                    <marker id="component-force-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                      <path d="M0 0L10 5L0 10Z" fill="#973f2e"/>
+                    </marker>
+                  </defs>
+                  <path d="M222 57H446V180" class="force-projection"/>
+                  <g class="force-component" marker-end="url(#component-force-arrow)">
+                    <path d="M222 180V57"/>
+                    <path d="M222 180H446"/>
+                  </g>
+                  <g class="force-actual" marker-end="url(#actual-force-arrow)">
+                    <path d="M222 180L446 57"/>
+                    <path d="M222 180V303"/>
+                  </g>
+                  <circle cx="222" cy="180" r="8" fill="#15283b"/>
+                  <text x="195" y="114" text-anchor="end" class="force-part-label">向上分量</text>
+                  <text x="196" y="189" text-anchor="end">Y</text>
+                  <text x="248" y="299">重量</text>
+                  <text x="455" y="49">父親對兒子施的力</text>
+                  <text x="462" y="183" class="force-part-label">水平分量</text>
+                  <text x="462" y="214" class="force-part-label">指向圓心</text>
+                </svg>
+                <figcaption><p>兒子（物體 Y）的隔離體圖｜虛線表示力的分量</p></figcaption>
+              </figure>
+              <div class="fact-line warm">
+                <p>向上分量與重量互相平衡，淨力沿水平方向指向圓心。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。按原圖把父親標作 X、兒子標作 Y。隔離體圖只用實線畫出作用於 Y 的兩道實際力。依原稿把 Y 理想化為沿水平圓形路徑移動，父親施力的向上分量與重量平衡。請學生由水平分量指出淨力方向，並用兩道實際力解釋。</p>
+          <p>來源為原 PDF 第 3–4 頁。若學生以為兒子的重量增加，指出重量仍為 mg。下一頁用原教材的俯視圖看淨力的方向。</p>
+        </aside>
+      </section>
+
+      <section id="uniform-circular-motion" aria-labelledby="uniform-heading">
+        <div class="slide-frame">
+          <h2 id="uniform-heading">勻速圓周運動</h2>
+          <div class="content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 38px;">
+            <div class="story-copy">
+              <p>父親（物體 <i>X</i>）對兒子（物體 <i>Y</i>）施的力和兒子的重量，導致有一道淨力沿水平方向作用於 <i>Y</i>。</p>
+              <div class="fact-line">
+                <p>該道淨力垂直於 <i>Y</i> 的速度，因此不會對 <i>Y</i> 作功。<i>Y</i> 不會加快或減慢，只會改變移動方向。</p>
+              </div>
+              <div class="fact-line warm">
+                <p>如果 <i>Y</i> 持續受這道淨力作用，就會以恆定的線速率沿圓形路徑移動，也就是作<strong>勻速圓周運動</strong>。這道淨力總是指向路徑的圓心，因此稱為<strong>向心力</strong>。</p>
+              </div>
+            </div>
+            <figure class="source-figure textbook-orbit">
+              <svg viewBox="0 0 626 475" role="img" aria-label="從上方看，兒子 Y 繞着位於圓心的父親 X 轉動。橙色淨力箭嘴總是指向 X，藍色箭嘴顯示 Y 的移動方向沿切線。">
+                <g transform="translate(313 237)">
+                  <circle r="161" class="orbit-guide"/>
+                  <circle r="25" fill="#f3cd6b" stroke="#85642a" stroke-width="2"/>
+                  <text class="orbit-point" y="1">X</text>
+                  <g class="orbit-rotor" style="--period:7s">
+                    <path class="inward-arrow" d="M-161 0 H-61 M-77 -9 L-60 0 L-77 9"/>
+                    <path class="travel-arrow" d="M-161 0 V93 M-170 77 L-161 94 L-152 77"/>
+                    <g transform="translate(-161 0)">
+                      <circle r="24" fill="#d1e7ed" stroke="#175e7a" stroke-width="2"/>
+                      <g class="orbit-upright"><text class="orbit-point" y="1">Y</text></g>
+                    </g>
+                    <g transform="translate(-105 -38)">
+                      <g class="orbit-upright"><text class="arrow-label">淨力</text></g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <figcaption class="orbit-caption">
+                <p>俯視圖｜父親 <i>X</i>、兒子 <i>Y</i></p>
+                <p class="travel-key"><span aria-hidden="true">⟶</span> 移動方向改變</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。俯視圖按原 PDF 第 4–5 頁改為自動循環。先指出淨力與速度垂直，再跟隨 Y 移動半圈，比較前後兩個位置的箭嘴。淨力的方向隨 Y 改變，但總是指向圓心 X。請學生說出 Y 在運動中保持不變的量，銜接向心加速度。</p>
+        </aside>
+      </section>
+
+      <section id="velocity-animation" aria-labelledby="velocity-heading">
+        <div class="slide-frame">
+          <h2 id="velocity-heading">向心加速度</h2>
+          <div class="content" style="display: grid; grid-template-columns: 2.02fr 1fr; gap: 38px;">
+            <figure class="film">
+              <video controls playsinline preload="auto" poster="media/velocity-turns.png" src="media/velocity-turns.mp4" aria-label="勻速圓周運動的速度與加速度動畫">
+                動畫展示等長的速度箭嘴沿切線轉向。把兩箭嘴平移至同一起點，可見速度的變化指向內側。
+              </video>
+              <figcaption><p>動畫｜俯視勻速圓周運動</p></figcaption>
+            </figure>
+            <div class="film-reading">
+              <div class="fact-line blue">
+                <h3><i>v</i>　速度</h3>
+                <p>物體作勻速圓周運動時，線速率恆定，速度沿切線。</p>
+              </div>
+              <div class="fact-line warm">
+                <h3><i>a</i>　向心加速度</h3>
+                <p>根據牛頓第二定律，加速度的方向與淨力相同。加速度 <i>a</i> 指向路徑的圓心，稱為向心加速度。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 3 分鐘。先播第一段，請學生同時追蹤兩個箭嘴。看到並排比較速度時暫停，指出 v₁ 與 v₂ 等長，把起點對齊後，Δv 由 v₁ 的箭嘴指向 v₂ 的箭嘴。</p>
+          <p>兩位置在中點兩旁對稱，因而 Δv 指向該中點的內側。縮短時間間隔，兩個位置趨近中點，瞬時 a 沿該處的半徑指向圓心。口頭判準：學生能說出加速度源自速度方向的改變。若把 a 當成沿行進方向，停在兩箭嘴同時出現的畫面比較。</p>
+        </aside>
+      </section>
+
+      <section id="acceleration-magnitude" aria-labelledby="magnitude-heading">
+        <div class="slide-frame">
+          <h2 id="magnitude-heading">向心加速度的量值</h2>
+          <div class="content" style="display: grid; grid-template-columns: 1.47fr 1fr; gap: 44px;">
+            <div class="equation-lesson">
+              <div class="formula-panel">
+                <p>物體作勻速圓周運動時，向心加速度的量值為</p>
+                <math display="block" aria-label="a 等於 v 的平方除以 r，等於 r 乘 ω 的平方">
+                  <mi>a</mi><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mi>r</mi></mfrac><mo>=</mo><mi>r</mi><msup><mi>ω</mi><mn>2</mn></msup>
+                </math>
+              </div>
+              <dl class="symbols">
+                <div><dt><i>a</i></dt><dd>向心加速度 <span>m s⁻²</span></dd></div>
+                <div><dt><i>v</i></dt><dd>線速率 <span>m s⁻¹</span></dd></div>
+                <div><dt><i>r</i></dt><dd>半徑 <span>m</span></dd></div>
+                <div><dt><i>ω</i></dt><dd>角速率 <span>rad s⁻¹</span></dd></div>
+              </dl>
+              <p class="connection">以 <i>v</i> = <i>rω</i> 代入，可由左式得到右式。</p>
+            </div>
+            <figure class="source-figure radius-figure">
+              <img src="media/radius-diagram.png" alt="原教材的圓形路徑。圖中兩個位置的速度 v 分別沿切線，加速度 a 都指向圓心，r 表示半徑。">
+              <figcaption><p>原教材圖｜兩個位置的 <i>v</i> 與 <i>a</i></p></figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 3 分鐘。先以同一位置指出 r 和 v，再重溫 v = rω。用板書寫 (rω)²/r = rω²。讓學生口頭指出哪個公式可直接用線速率。若以為兩式的 r 都會令 a 向同一方向改變，留到模擬以控制變量處理。</p>
+          <p>來源：原 PDF 第 6–7 頁。式中的 v 是線速率量值，圖上的 v 箭嘴表示速度向量。</p>
+        </aside>
+      </section>
+
+      <section id="measurement" aria-labelledby="measurement-heading">
+        <div class="slide-frame">
+          <h2 id="measurement-heading">向心加速度和角速率</h2>
+          <div class="content" style="display: grid; grid-template-columns: 1.08fr 1fr; gap: 44px;">
+            <div class="measurement-copy">
+              <figure class="source-figure chair-figure">
+                <img src="media/chair.png" alt="手機固定在旋轉椅上，手機 y 軸沿半徑向外。">
+                <figcaption><p>原教材圖｜手機固定在旋轉椅上</p></figcaption>
+              </figure>
+              <p>用膠紙把手機固定在旋轉椅上，讓手機的 <i>y</i> 軸徑向從 <i>O</i> 點指出。轉動椅子，量度向心加速度 <i>a</i> 和角速率 <i>ω</i>。</p>
+            </div>
+            <div class="trend-panel">
+              <p class="card-label">固定半徑時的關係（示意）</p>
+              <div class="trend" role="img" aria-label="理想關係示意圖，橫軸是角速率的平方，縱軸是向心加速度。趨勢線通過原點，斜率是半徑 r。">
+                <span class="plot-axis x-axis" aria-hidden="true"></span>
+                <span class="plot-axis y-axis" aria-hidden="true"></span>
+                <span class="plot-ray" aria-hidden="true"></span>
+                <p class="plot-a" aria-hidden="true"><i>a</i> <span>(m s⁻²)</span></p>
+                <p class="plot-omega" aria-hidden="true"><i>ω</i>² <span>(rad² s⁻²)</span></p>
+                <p class="plot-zero" aria-hidden="true">0</p>
+                <p class="plot-slope" aria-hidden="true">斜率為 <i>r</i></p>
+              </div>
+              <p class="trend-conclusion"><i>a</i>–<i>ω</i>² 線圖是一條穿過原點的直線。<i>a</i> 與 <i>ω</i>² 成正比。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。沿原圖手機的 y 軸指出徑向，說明向心加速度向內，所用讀數取其量值。讓學生讀出橫軸是 ω²，說出直線通過原點表示正比。變速時可以同時有切向加速度，圖中只呈現徑向分量的關係。</p>
+          <p>來源：原 PDF 第 8–13 頁。右圖是依 a = rω² 所畫的理想關係，供判讀斜率與截距。</p>
+        </aside>
+      </section>
+
+      <section id="compare-radius" aria-labelledby="compare-heading">
+        <div class="slide-frame">
+          <h2 id="compare-heading">向心加速度和半徑</h2>
+          <div class="content comparison-layout">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+              <div class="compare-card">
+                <h3>線速率 <i>v</i> 固定</h3>
+                <math display="block" aria-label="a 等於 v 的平方除以 r">
+                  <mi>a</mi><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mi>r</mi></mfrac>
+                </math>
+                <p><i>r</i> 加倍，<strong><i>a</i> 減半</strong>。</p>
+              </div>
+              <div class="compare-card warm-card">
+                <h3>角速率 <i>ω</i> 固定</h3>
+                <math display="block" aria-label="a 等於 r 乘 ω 的平方">
+                  <mi>a</mi><mo>=</mo><mi>r</mi><msup><mi>ω</mi><mn>2</mn></msup>
+                </math>
+                <p><i>r</i> 加倍，<strong><i>a</i> 也加倍</strong>。</p>
+              </div>
+            </div>
+            <p class="comparison-note">兩式等價。由 <i>v</i> = <i>rω</i> 可見，當 <i>r</i> 改變時，<i>v</i> 和 <i>ω</i> 不能同時固定。</p>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。先指出各個算式適用的固定量，再請學生用 v = rω 解釋兩種情況。若以為公式有矛盾，指出固定 ω 時 v 也隨 r 改變。可在稍後的模擬中核對兩個結果。</p>
+          <p>這是原 PDF 第 14–19 頁的概念結論。下一頁運用牛頓第二定律求向心力的量值。</p>
+        </aside>
+      </section>
+
+      <section id="newtons-second-law" aria-labelledby="second-law-heading">
+        <div class="slide-frame">
+          <h2 id="second-law-heading">圓周運動和牛頓第二定律</h2>
+          <div class="content" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 42px;">
+            <div class="equation-lesson">
+              <div class="formula-panel force-formula">
+                <p>根據牛頓第二定律，向心力的量值為</p>
+                <math display="block" aria-label="F 等於 m a，等於 m 乘 v 的平方除以 r，等於 m r 乘 ω 的平方">
+                  <mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac><mo>=</mo><mi>m</mi><mi>r</mi><msup><mi>ω</mi><mn>2</mn></msup>
+                </math>
+              </div>
+              <dl class="symbols force-symbols">
+                <div><dt><i>F</i></dt><dd>向心力 <span>N</span></dd></div>
+                <div><dt><i>m</i></dt><dd>質量 <span>kg</span></dd></div>
+              </dl>
+            </div>
+            <div class="fact-line blue">
+              <h3>向心加速度的量值</h3>
+              <p>把 <i>a</i> = <i>v</i>²/<i>r</i> 或 <i>a</i> = <i>rω</i>² 代入 <i>F</i> = <i>ma</i>，便得出兩個向心力的算式。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。按原 PDF 第 26 頁，由 F = ma 接上兩個向心加速度的算式。讓學生口頭指出各式較適合用哪個已知量。下一頁辨認提供向心力的實際力。</p>
+        </aside>
+      </section>
+
+      <section id="force-sources" aria-labelledby="sources-heading">
+        <div class="slide-frame">
+          <div class="sources-header"><h2 id="sources-heading">不同的力可以提供向心力</h2><button id="source-view" type="button" aria-pressed="false">查看原教材圖</button></div>
+          <div class="content force-cases">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+              <figure class="case-card">
+                <div class="case-picture"><img src="media/friction.png" alt="轉盤上的點心受朝向轉盤中心的摩擦力。垂直的法向力與重量平衡。">
+                  <svg class="case-motion" viewBox="0 0 400 320" role="img" aria-label="俯視餐桌轉盤。點心隨轉盤轉動，靜摩擦力一直指向轉盤中心。">
+                    <g transform="translate(200 160)">
+                      <circle r="137" fill="#e3eeee" stroke="#517780" stroke-width="4"/>
+                      <circle r="128" fill="none" stroke="#93b3b5" stroke-width="2"/>
+                      <circle r="86" class="orbit-guide"/><circle r="6" fill="#476b77"/>
+                      <g class="orbit-rotor" style="--period:6s">
+                        <path d="M0 -132 v9 M132 0 h-9 M0 132 v-9 M-132 0 h9" stroke="#758e91" stroke-width="3"/>
+                        <g transform="translate(-86 0)">
+                          <circle r="30" fill="#d6a162" stroke="#805831" stroke-width="3"/>
+                          <circle r="24" fill="#edcb94" stroke="#9b713c" stroke-width="2"/>
+                          <g fill="#fff1bc" stroke="#b99867" stroke-width="1.3"><circle cx="-9" cy="-6" r="10"/><circle cx="10" cy="-5" r="9"/><circle cy="10" r="10"/></g>
+                          <g fill="#d1914c"><circle cx="-9" cy="-6" r="2.8"/><circle cx="10" cy="-5" r="2.8"/><circle cy="10" r="2.8"/></g>
+                        </g>
+                        <path class="inward-arrow" d="M-86 0 H-24 M-36 -7 L-23 0 L-36 7"/>
+                        <g transform="translate(-48 -54)">
+                          <g class="orbit-upright"><text class="arrow-label">摩擦力 <tspan class="math-symbol">f</tspan></text></g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><h3>餐桌轉盤</h3><p>摩擦力 <i>f</i></p></figcaption>
+              </figure>
+              <figure class="case-card">
+                <div class="case-picture"><img src="media/normal.png" alt="洗衣機滾筒對襪子的法向力指向轉軸，提供向心力。">
+                  <svg class="case-motion" viewBox="0 0 400 320" role="img" aria-label="俯視垂直軸洗衣機。襪子貼着滾筒內壁轉動，滾筒的法向力一直指向轉軸。">
+                    <g transform="translate(200 160)">
+                      <rect x="-139" y="-139" width="278" height="278" rx="24" fill="#e6ebec" stroke="#6c7e87" stroke-width="3"/>
+                      <circle r="123" fill="#b9cbd0" stroke="#4e6672" stroke-width="5"/>
+                      <circle r="110" fill="#eaf2f1" stroke="#829ba4" stroke-width="3"/>
+                      <circle r="16" fill="#b8cace" stroke="#7f969c" stroke-width="2"/>
+                      <g class="orbit-rotor" style="--period:5s">
+                        <circle r="117" fill="none" stroke="#69828c" stroke-width="4" stroke-dasharray="3 11"/>
+                        <path d="M-107 -22 L-90 -22 L-90 3 L-77 9 Q-67 15 -75 23 Q-82 31 -92 25 L-104 18 Q-110 14 -110 4 Z" fill="#f6ce62" stroke="#8b6b34" stroke-width="3"/>
+                        <path d="M-107 -15 H-91" stroke="#aa8342" stroke-width="3"/>
+                        <path class="inward-arrow" d="M-101 0 H-39 M-51 -7 L-38 0 L-51 7"/>
+                        <g transform="translate(-64 -54)">
+                          <g class="orbit-upright"><text class="arrow-label">法向力 <tspan class="math-symbol">R</tspan></text></g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><h3>洗衣機</h3><p>滾筒的法向力 <i>R</i></p></figcaption>
+              </figure>
+              <figure class="case-card">
+                <div class="case-picture"><img src="media/gravity.png" alt="地球對月球施的重力指向地球。">
+                  <svg class="case-motion" viewBox="0 0 400 320" role="img" aria-label="月球沿近似圓形的軌道繞地球運動，地球對月球的重力一直指向地球。">
+                    <g transform="translate(200 160)">
+                      <circle r="107" class="orbit-guide"/>
+                      <image href="media/earth.png" x="-29" y="-29" width="58" height="58"/>
+                      <g class="orbit-rotor" style="--period:8s">
+                        <image href="media/moon.png" x="89" y="-18" width="36" height="36"/>
+                        <path class="inward-arrow" d="M107 0 H45 M57 -7 L44 0 L57 7"/>
+                        <g transform="translate(72 -46)">
+                          <g class="orbit-upright"><text class="arrow-label">重力 <tspan class="math-symbol">F</tspan></text></g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><h3>月球繞地球</h3><p>地球的重力 <i>F</i></p></figcaption>
+              </figure>
+            </div>
+            <p class="comparison-note"><span class="motion-note"><span class="force-key" aria-hidden="true">⟶</span> 箭嘴所示的力指向圓心，提供物體作勻速圓周運動所需的向心力。</span><span class="original-note">向心力是作用於物體的淨力，使物體一直作勻速圓周運動。</span></p>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。以轉盤上的點心為主例，說明點心未滑動時由靜摩擦力提供向心力。口頭請學生指出另外兩圖中的實際力和方向。若另加一支名為「向心力」的箭嘴，回到隔離體圖，先畫實際受力，再求合力。</p>
+          <p>來源為原 PDF 第 27 頁。洗衣機例按原圖視作垂直軸滾筒，月球軌道在這裏近似為圓形。接着看向心力和向心加速度的量值和方向。</p>
+        </aside>
+      </section>
+
+      <section id="centripetal-force-properties" aria-labelledby="force-properties-heading">
+        <div class="slide-frame">
+          <h2 id="force-properties-heading">向心力和向心加速度的要點</h2>
+          <div class="content" style="display: grid; grid-template-columns: 0.94fr 1.06fr; gap: 42px;">
+            <div class="story-copy">
+              <p>物體作勻速圓周運動時，向心力和向心加速度都具有恆定的量值，但它們的方向卻不斷改變。</p>
+              <div class="fact-line warm">
+                <h3>向心力不會對物體作功</h3>
+                <p>無論在哪一刻，向心力都與物體的速度互相垂直。</p>
+              </div>
+            </div>
+            <figure class="source-figure angle-figure">
+              <img src="media/right-angle.png" alt="原教材的圓周運動圖，紅色向心力 F 與切向速度 v 成直角。">
+              <figcaption><p>原教材圖｜向心力與速度垂直</p></figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。按原 PDF 第 28 頁，在原圖指出直角。請學生用「沿瞬時位移方向無力的分量」解釋為甚麼向心力不作功。下一頁用模擬同時核對向心力和向心加速度的量值。</p>
+        </aside>
+      </section>
+
+      <section id="orbit-simulation" aria-labelledby="sim-heading">
+        <div class="slide-frame simulation-frame">
+          <h2 id="sim-heading">模擬｜調節圓周運動的物理量</h2>
+          <div class="content" style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 34px;">
+            <div class="sim-display" data-prevent-swipe>
+              <figure class="vector-board sim-board">
+                <canvas id="orbit" width="1440" height="854" role="img" aria-label="圓周運動俯視圖，速度箭嘴沿切線，加速度箭嘴指向圓心。"></canvas>
+                <figcaption class="vector-key">
+                  <p><span class="blue-key">v</span> 速度</p>
+                  <p><span class="warm-key">a</span> 向心加速度</p>
+                </figcaption>
+              </figure>
+              <div class="sim-toolbar">
+                <div class="sim-buttons" role="group" aria-label="模擬播放控制">
+                  <button type="button" id="play-orbit">播放</button>
+                  <button type="button" id="step-orbit">步進</button>
+                  <button type="button" id="reset-orbit">重設</button>
+                </div>
+                <p>以四分一速度播放</p>
+              </div>
+            </div>
+            <div class="sim-settings" data-prevent-swipe>
+              <fieldset class="locked-quantity">
+                <legend>改變半徑時保持</legend>
+                <div class="mode-options">
+                  <label><input type="radio" name="fixed-rate" value="v" checked>線速率 <i>v</i></label>
+                  <label><input type="radio" name="fixed-rate" value="ω">角速率 <i>ω</i></label>
+                </div>
+              </fieldset>
+              <div class="settings-inputs">
+                <label class="range-control" for="radius">
+                  <span id="radius-label">半徑 <i>r</i></span><output for="radius" id="radius-value" aria-live="off">1.0 m</output>
+                  <input id="radius" aria-labelledby="radius-label" type="range" min="0.5" max="2.0" step="0.1" value="1.0">
+                </label>
+                <label class="range-control" for="rate">
+                  <span id="rate-label">線速率 <i>v</i></span><output for="rate" id="rate-value" aria-live="off">2.0 m s⁻¹</output>
+                  <input id="rate" aria-labelledby="rate-label" type="range" min="1.0" max="4.0" step="0.1" value="2.0">
+                </label>
+                <label class="range-control" for="mass">
+                  <span id="mass-label">質量 <i>m</i></span><output for="mass" id="mass-value" aria-live="off">1.0 kg</output>
+                  <input id="mass" aria-labelledby="mass-label" type="range" min="0.5" max="3.0" step="0.1" value="1.0">
+                </label>
+              </div>
+              <dl class="readouts" aria-label="物理量讀數">
+                <div><dt>線速率 <i>v</i></dt><dd><output id="speed" aria-live="off">2.00</output> <span>m s⁻¹</span></dd></div>
+                <div><dt>角速率 <i>ω</i></dt><dd><output id="omega" aria-live="off">2.00</output> <span>rad s⁻¹</span></dd></div>
+                <div class="emphasis"><dt>向心加速度 <i>a</i></dt><dd><output id="acceleration" aria-live="off">4.00</output> <span>m s⁻²</span></dd></div>
+                <div class="emphasis"><dt>向心力 <i>F</i></dt><dd><output id="net-force" aria-live="off">4.00</output> <span>N</span></dd></div>
+              </dl>
+              <p class="sim-hint">切換固定量時，回到 <i>r</i> = 1.0 m 的比較起點。</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 5 分鐘。先播放，請學生觀察箭嘴方向，再暫停讀數。固定 v，由 r = 1.0 m 拖至 2.0 m，讀出 a 由 4.00 降至 2.00 m s⁻²。切換固定 ω，從相同起點再把 r 加倍，a 由 4.00 升至 8.00 m s⁻²。</p>
+          <p>請學生先說哪個量固定，再解釋讀數。最後只增加 m，確認 a 不變而 F 增大。若混淆兩式，逐一指向模式和對應公式。每次設定代表另一個水平面內的勻速圓周運動。箭長用來辨認同一量的增減，精確比較用讀數。</p>
+        </aside>
+      </section>
+
+      <section id="bowl-demo" aria-labelledby="bowl-heading">
+        <div class="slide-frame">
+          <h2 id="bowl-heading">脫離圓形路徑</h2>
+          <div class="content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;">
+            <figure class="bowl-card">
+              <div class="bowl-picture"><img src="media/bowl-contact.png" alt="在剪開一角的紙碗內沿碗壁輕推小球。"></div>
+              <figcaption>
+                <h3>接觸碗壁時</h3>
+                <p>小球沿碗壁作圓周運動。向心力由碗壁施加的法向力的水平分量提供。</p>
+              </figcaption>
+            </figure>
+            <figure class="bowl-card">
+              <div class="bowl-picture"><img src="media/bowl-exit.png" alt="小球離開紙碗後的連續位置，沿出口切線近似排成一直線。"></div>
+              <figcaption>
+                <h3>離開碗壁後</h3>
+                <p>小球一離開紙碗，這道法向力便立即消失。小球會以剛離開碗子時的方向繼續移動。</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。沿左圖指出彎路，在右圖指出剪口和小球離開後的連續位置。讓學生沿出碗的直線比劃方向。若以為小球徑向飛走，在下一頁暫停離開點，指出小球當時的速度方向。</p>
+          <p>來源：原 PDF 第 29–32 頁。桌面摩擦在理想模型中忽略，實物小球可能逐漸減速。</p>
+        </aside>
+      </section>
+
+      <section id="tangent-animation" aria-labelledby="tangent-heading">
+        <div class="slide-frame">
+          <h2 id="tangent-heading">圓周運動和牛頓第一定律</h2>
+          <div class="content" style="display: grid; grid-template-columns: 2.02fr 1fr; gap: 38px;">
+            <figure class="film">
+              <video controls playsinline preload="auto" poster="media/tangent-exit.png" src="media/tangent-exit.mp4" aria-label="撤去向心力後，小球沿切線前進的動畫">
+                撤去向心力且水平淨力為零時，小球沿離開點的切線直線前進，速度的大小和方向保持不變。
+              </video>
+              <figcaption><p>動畫｜小球離開圓形路徑的瞬間</p></figcaption>
+            </figure>
+            <div class="film-reading">
+              <div class="fact-line warm">
+                <h3>在離開的一刻</h3>
+                <p>小球一離開紙碗，碗壁的法向力便立即消失。</p>
+              </div>
+              <div class="fact-line blue">
+                <h3>應用牛頓第一定律</h3>
+                <p>若水平淨力為零，小球由於慣性，會以剛離開碗子時的速率和方向繼續移動，路徑沿切線成一直線。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。播放至離開點附近先暫停，再播放剩餘部分。請學生觀察橙色 F 消失時，藍色 v 的方向有沒有跳變。判準：以離開點的切線與牛頓第一定律連起兩個畫面。若學生以為小球沿半徑離開，重播停在離開時比較 v 和 F。</p>
+          <p>動畫視角為俯視，模型忽略水平摩擦。重力與支持力在垂直方向平衡。</p>
+        </aside>
+      </section>
+
+      <section id="summary" aria-labelledby="summary-heading">
+        <div class="slide-frame">
+          <h2 id="summary-heading">圓周運動的三個重點</h2>
+          <div class="content summary-layout">
+            <div class="summary-row">
+              <h3>看方向</h3>
+              <p>速度沿切線，向心加速度和向心力指向圓心。</p>
+            </div>
+            <div class="summary-row">
+              <h3>比較量值</h3>
+              <p>先確定固定的是線速率還是角速率，再比較向心加速度。</p>
+            </div>
+            <div class="summary-row">
+              <h3>追蹤路徑</h3>
+              <p>撤去向心力後，若水平淨力為零，物體沿切線勻速前進。</p>
+            </div>
+            <div class="summary-formulas" aria-label="三條主要公式">
+              <math aria-label="v 等於 r ω"><mi>v</mi><mo>=</mo><mi>r</mi><mi>ω</mi></math>
+              <math aria-label="a 等於 v 的平方除以 r，等於 r 乘 ω 的平方">
+                <mi>a</mi><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mi>r</mi></mfrac><mo>=</mo><mi>r</mi><msup><mi>ω</mi><mn>2</mn></msup>
+              </math>
+              <math aria-label="F 等於 m a"><mi>F</mi><mo>=</mo><mi>m</mi><mi>a</mi></math>
+            </div>
+            <p class="source-credit">原教材｜牛津大學出版社《9.2 向心力與向心加速度》</p>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>約 2 分鐘。口頭請一位學生用「淨力、速度、切線」串起圓周運動和離開路徑。判準是說到向內淨力持續改變速度方向，撤去後若無水平淨力便沿原速度的方向前進。若仍把向心力當成額外力，回到轉盤圖只列實際力。</p>
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/package/dist/reveal.js"></script>
+  <script src="vendor/package/plugin/notes/notes.js"></script>
+  <script src="orbit.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+.lesson-forest {
+  color: #1c3336;
+  background: #fffefa;
+  font-size: 20px;
+}
+
+.lesson-forest main {
+  grid-template-columns: minmax(0, 1fr) minmax(304px, 25%);
+  min-height: 0;
+  height: 100dvh;
+}
+
+.lesson-forest .field { min-height: 0; height: auto; }
+.lesson-forest #stage { min-height: 0; }
+.lesson-forest .scene-foot { padding: 9px 20px; font-size: 18px; }
+.lesson-forest .scene-foot b { font-size: 24px; }
+.lesson-forest .scene-foot > :last-child { white-space: nowrap; }
+
+.lesson-forest aside {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 22px 18px;
+  background: #fffefa;
+  border-left: 1px solid #cbd8d1;
+}
+
+.lesson-forest .row { margin-top: 0; gap: 6px; font-size: 19px; }
+.lesson-forest .row output { font-size: 18px; white-space: nowrap; }
+.lesson-forest input[type="range"] { display: block; margin: 10px 0 4px; accent-color: #17685e; }
+.lesson-forest .check { display: flex; gap: 7px; align-items: center; cursor: pointer; }
+.lesson-forest .check input { margin: 0; }
+.lesson-forest .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.lesson-forest .actions button { min-height: 46px; padding: 7px 5px; font-size: 18px; }
+.lesson-forest #play { color: #fff; background: #17685e; border-color: #17685e; }
+.lesson-forest #rewind:not(:disabled) { color: #174d44; background: #e6f0ea; }
+
+.model-conditions {
+  padding-top: 10px;
+  border-top: 1px solid #cbd8d1;
+  font-size: 16px;
+}
+.model-conditions summary { color: #365a56; }
+.model-conditions .row, .model-conditions .check { margin-top: 12px; }
+
+@media (max-width: 780px) {
+  .lesson-forest main { display: flex; min-height: 100dvh; height: auto; }
+  .lesson-forest .field { min-height: 400px; }
+  .lesson-forest aside { border-left: 0; }
+}

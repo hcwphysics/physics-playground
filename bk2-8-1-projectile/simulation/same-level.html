@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>猴子和獵人｜同一水平</title>
+  <link rel="stylesheet" href="forest.css">
+  <link rel="stylesheet" href="lesson.css">
+  <script defer src="forest-model.js"></script>
+  <script defer src="forest.js"></script>
+</head>
+<body class="lesson-forest">
+  <main>
+    <section class="field" aria-label="同一水平運動場">
+      <div id="stage">
+        <canvas id="scenery" aria-hidden="true"></canvas>
+        <canvas id="scene" aria-label="軟球和猴子的側視運動"></canvas>
+        <button type="button" class="grab" id="launcher" aria-label="拖動獵人，方向鍵移動"></button>
+        <button type="button" class="grab" id="monkey" aria-label="拖動猴子，方向鍵移動"></button>
+        <button type="button" class="grab" id="direction" aria-label="拖動橙色箭嘴改變發射角，方向鍵微調"></button>
+      </div>
+      <div class="scene-foot">
+        <span id="status" role="status"></span>
+        <span aria-label="飛行時間"><b id="clock">0.00</b> s</span>
+      </div>
+    </section>
+    <aside aria-label="實驗控制">
+      <div>
+        <div class="row"><label for="speed">初速率</label><output id="speed-val" for="speed"></output></div>
+        <input id="speed" type="range" min="10" max="75" step=".5" value="30">
+      </div>
+      <label class="check"><input id="path" type="checkbox"> 顯示軌跡</label>
+      <div class="actions">
+        <button type="button" id="play">▶ 發射</button>
+        <button type="button" id="step">下一格 +0.10 s</button>
+        <button type="button" id="rewind" disabled>↶ 返回上次位置和方向</button>
+        <button type="button" id="align">水平對準</button>
+        <button type="button" id="reset">還原預設擺位</button>
+      </div>
+      <details class="model-conditions">
+        <summary>重力與空氣阻力</summary>
+        <div class="row"><label for="gravity">重力加速度</label><output id="gravity-val" for="gravity"></output></div>
+        <input id="gravity" type="range" min="0" max="50" step=".1" value="9.8">
+        <button type="button" id="earth" class="minor">地球 9.8 m/s²</button>
+        <label class="check"><input id="drag" type="checkbox"> 空氣阻力</label>
+        <div class="row"><label for="k">阻力係數 k</label><output id="k-val" for="k">關閉</output></div>
+        <input id="k" type="range" min=".05" max=".8" step=".05" value=".2" disabled>
+      </details>
+    </aside>
+  </main>
+  <script>
+    document.addEventListener('keydown', (event) => {
+      if (window.parent === window || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (event.target?.closest?.('input, select, textarea')) return;
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      window.parent.postMessage({ type: 'forest-slide-navigation', direction: event.key }, '*');
+    });
+  </script>
+</body>
+</html>
