@@ -541,9 +541,11 @@ function animate(now) {
   if (flight.paused) return;
   const end=flight.shot.impact ?? flight.shot.time;
   const before=flight.elapsed;
-  const interval=now-flight.previous;
+  // Establish the clock from the first animation frame after launch or resume.
+  const previous=flight.previous ?? now;
+  const interval=Math.max(0,now-previous);
   flight.elapsed=Math.min(end,flight.elapsed+interval/1000);
-  flight.previous=now;
+  flight.previous=Math.max(previous,now);
   if (flight.low) {
     if (flight.elapsed>=end) {
       const low=flight.low, high=flight.shot;
@@ -570,14 +572,14 @@ function launch() {
   shot.id=setting.count+1;
   shot.style=mode==='study' ? setting.count%3 : mode==='challenge' ? (landedInZone(shot) ? Number(shot.angle>45) : 2) : 0;
   if (reduce.matches) { finish(shot); return; }
-  flight={shot, elapsed:0, previous:performance.now(), paused:false};
+  flight={shot, elapsed:0, previous:null, paused:false};
   announce('飛行中'); render(); frame=requestAnimationFrame(animate);
 }
 function pause() {
   if (!flight) return;
   flight.paused=!flight.paused;
   if (flight.paused) { stopFrame(); announce('已暫停'); draw(); }
-  else { flight.previous=performance.now(); announce('飛行中'); frame=requestAnimationFrame(animate); }
+  else { flight.previous=null; announce('飛行中'); frame=requestAnimationFrame(animate); }
   updateControls();
 }
 function onBird(event) {
@@ -678,7 +680,7 @@ el('replay-routes').addEventListener('click',()=>{
   const s=modes.challenge;
   if (mode!=='challenge' || flight || !s.low || !s.high) return;
   cancelInteraction(); selected=null; s.review=true; s.last=s.high;
-  flight={shot:s.high,low:s.low,elapsed:0,previous:performance.now(),paused:false};
+  flight={shot:s.high,low:s.low,elapsed:0,previous:null,paused:false};
   announce(s.low.angle+'° 和 '+s.high.angle+'° 同時發射。'); render();
   frame=requestAnimationFrame(animate);
 });
