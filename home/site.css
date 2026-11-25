@@ -88,12 +88,13 @@ h1 { font-size: clamp(47.6px, 5.865vw, 119px); line-height: .99; }
 .table-anchor { position: absolute; inset: 0 -1.8% 0 35%; pointer-events: none; }
 /* The transparent scene passes over the type. Navigation and teaching links sit above it. */
 .stage { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
-.stage canvas, .poster { width: 100%; height: 100%; position: absolute; inset: 0; display: block; }
+.stage #playground, .poster { width: 100%; height: 100%; position: absolute; inset: 0; display: block; }
 .poster { object-fit: contain; pointer-events: none; }
-.stage canvas { visibility: hidden; touch-action: manipulation; }
-.stage[data-live] canvas { visibility: visible; pointer-events: auto; }
+.stage #playground { visibility: hidden; touch-action: manipulation; }
+#scene-output { position: absolute; left: 0; width: 100%; display: block; pointer-events: none; }
+.stage[data-live] #playground { visibility: visible; pointer-events: auto; }
 .stage[data-live] .poster { visibility: hidden; }
-.stage canvas:focus-visible { outline-offset: -3px; border-radius: 3px; }
+.stage #playground:focus-visible { outline-offset: -3px; border-radius: 3px; }
 .catalogue .entries a { background-color: rgb(250 250 247 / 94%); }
 .catalogue .entries a:hover, .catalogue .entries a:focus-visible { background-color: #eaf0fd; }
 .baseline { min-height: clamp(48px, 8vh, 70px); border-top: 1px solid var(--ink); }

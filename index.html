@@ -6,17 +6,17 @@
   <meta name="theme-color" content="#fafaf7">
   <title>Physics Playground · 物理教室</title>
   <link rel="icon" href="home/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="home/site.css">
+  <link rel="stylesheet" href="home/site.css?v=stage-detail3">
   <script defer src="home/navigation.js"></script>
-  <script defer src="home/playground.js?v=cat-motion-2"></script>
+  <script defer src="home/playground.js?v=stage-detail3"></script>
 </head>
 <body>
   <div class="stage" id="stage">
     <picture>
-      <source media="(max-aspect-ratio: 1/1)" srcset="home/playground-portrait.webp?v=cat-motion-2">
-      <img class="poster" src="home/playground.webp?v=cat-motion-2" alt="柴犬和橘色虎斑貓在物理教室內散步，右方放着一座牛頓擺。" draggable="false">
+      <source media="(max-aspect-ratio: 1/1)" srcset="home/playground-portrait.webp?v=stage-detail3">
+      <img class="poster" src="home/playground.webp?v=stage-detail3" alt="柴犬和橘色虎斑貓在物理教室內散步，右方放着一座牛頓擺。" draggable="false">
     </picture>
-    <canvas id="playground" aria-label="柴犬和橘色虎斑貓會走過標題前方。輕點畫面讓牠們走近，或按 Enter 選擇位置。" role="button" tabindex="-1"></canvas>
+    <div id="playground" aria-label="柴犬和橘色虎斑貓會走過標題前方。輕點畫面讓牠們走近，或按 Enter 選擇位置。" role="button" tabindex="-1"><canvas id="scene-output" aria-hidden="true"></canvas></div>
   </div>
   <div class="sheet">
     <header class="masthead">
