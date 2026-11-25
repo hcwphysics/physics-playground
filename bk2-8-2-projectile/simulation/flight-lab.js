@@ -3,6 +3,9 @@
 const g = 10;
 const radians = Math.PI / 180;
 const challengeRange = 12.47;
+const challengeStartAngle = 44;
+const challengeAngles = { min: 16, max: 74, step: 2 };
+const regularAngles = { min: 15, max: 75, step: 1 };
 const walls = {
   low:  { left: 5.5, right: 7.0, bottom: 3.15, top: 6.6 },
   high: { left: 5.5, right: 7.0, bottom: -1.5, top: 3.15 }
@@ -59,13 +62,14 @@ function impactTime(shot, wall) {
 const modes = {
   trial: { speed: 12, angle: 45, last: null, count: 0, cleared:new Set() },
   study: { speed: 12, angle: 45, last: null, count: 0, samples: [], lock: 'angle' },
-  challenge: { speed: 12, angle: 45, last: null, count: 0, low: null, high: null, route:'low', review:false, lock: 'speed' }
+  challenge: { speed: 12, angle: challengeStartAngle, last: null, count: 0, low: null, high: null, route:'low', review:false, lock: 'speed' }
 };
 let mode = 'trial', flight = null, drag = null, chart, selected = null, frame = 0, cheerStart = null;
 let marks = [];
 let replayLanded=false;
 let hasFlightSprite;
 const activity = () => modes[mode];
+const angleScale = () => mode==='challenge' ? challengeAngles : regularAngles;
 const trialComplete = () => mode==='trial' && modes.trial.cleared.size===targets.length;
 const checked = key => filters.find(input => input.dataset.show === key).checked;
 function records() {
@@ -508,7 +512,8 @@ function finish(shot) {
     setting.review=Boolean(landedInZone(shot) && setting.low && setting.high);
     message=setting.review ? '✓ 命中旗標！'+shot.angle+'° 成功。兩條路徑的水平射程同為 12.47 m。' :
       shot.impact!=null ? '碰到岩壁，飛行結束。改變角度再試。' :
-      landedInZone(shot) ? '✓ 命中旗標！'+shot.angle+'° 能通過這一關。' : '未落在旗標上，調整角度再試。';
+      landedInZone(shot) ? '✓ 命中旗標！'+shot.angle+'° 能通過這一關。' :
+      '未落在旗標上，落點在旗標'+(shot.range<challengeRange ? '左' : '右')+'方。';
   } else {
     shot.hitTarget=hitIndex(shot);
     if (shot.hitTarget>=0) {
@@ -589,7 +594,11 @@ function aim(event) {
     setting.speed=drag.speed; setting.angle=drag.angle;
   } else {
     if (setting.lock!=='speed') setting.speed=8+Math.round(clamp((drag.length-9)/(chart.maxPull-9),0,1)*16)/2;
-    if (setting.lock!=='angle') setting.angle=clamp(Math.round(Math.atan2(dy,dx)/radians),15,75);
+    if (setting.lock!=='angle') {
+      const {min,max,step}=angleScale();
+      const angle=Math.atan2(dy,dx)/radians;
+      setting.angle=clamp(min+Math.round((angle-min)/step)*step,min,max);
+    }
   }
 }
 function paintAim() {
@@ -638,6 +647,7 @@ function showMode(nextMode) {
   if (mode === nextMode) return;
   cancelInteraction(); mode=nextMode; selected=null;
   el('lab').dataset.mode=mode;
+  Object.assign(el('angle'),angleScale());
   for (const button of modeButtons) button.setAttribute('aria-pressed',String(button.dataset.mode===mode));
   el('manual').open=mode!=='trial';
   el('records').open=!compactPanels.matches;
@@ -696,7 +706,7 @@ el('clear').addEventListener('click',() => {
   cancelInteraction(); selected=null;
   const setting=activity(); setting.last=null; setting.count=0;
   if (mode==='study') setting.samples=[]; else if (mode==='challenge') {
-    Object.assign(setting,{low:null,high:null,route:'low',review:false,angle:45});
+    Object.assign(setting,{low:null,high:null,route:'low',review:false,angle:challengeStartAngle});
   }
   announce(''); render();
 });
