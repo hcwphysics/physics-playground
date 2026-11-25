@@ -194,6 +194,33 @@ function showTextbookFigures(show) {
 sourceView.addEventListener("click", () => showTextbookFigures(!sourcesSlide.classList.contains("show-originals")));
 updateModel();
 
+for (const clip of document.querySelectorAll(".film video")) {
+  const caption = clip.closest("figure");
+  const advance = caption.querySelector("[data-advance]");
+  const replay = caption.querySelector("[data-replay]");
+  function updatePlayback() {
+    advance.textContent = !clip.paused ? "暫停" : clip.ended ? "從頭播放" : clip.currentTime > 0 ? "繼續播放" : "播放";
+  }
+  function startPlayback() {
+    clip.play().catch(updatePlayback);
+  }
+  advance.addEventListener("click", () => {
+    if (!clip.paused) {
+      clip.pause();
+      return;
+    }
+    if (clip.ended) clip.currentTime = 0;
+    startPlayback();
+  });
+  replay.addEventListener("click", () => {
+    clip.currentTime = 0;
+    startPlayback();
+  });
+  for (const event of ["play", "pause", "ended", "seeked"]) {
+    clip.addEventListener(event, updatePlayback);
+  }
+}
+
 Reveal.initialize({
   width: 1440,
   height: 810,
@@ -212,4 +239,10 @@ Reveal.on("slidechanged", ({ previousSlide }) => {
   if (previousSlide === sim) pause();
   if (previousSlide === sourcesSlide) showTextbookFigures(false);
   previousSlide?.querySelector("video")?.pause();
+});
+const pauseVideo = () => Reveal.getCurrentSlide()?.querySelector("video")?.pause();
+Reveal.on("overviewshown", pauseVideo);
+Reveal.on("paused", pauseVideo);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) pauseVideo();
 });

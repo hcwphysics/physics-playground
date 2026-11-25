@@ -157,7 +157,7 @@
 .square-media img { height: 401px; }
 .graph canvas { display: block; width: 100%; height: auto; }
 .film { background: var(--night); }
-.film video { display: block; width: 100%; max-width: none; max-height: none; aspect-ratio: 16 / 9; }
+.film video { display: block; width: 100%; max-width: none; max-height: none; aspect-ratio: 16 / 9; pointer-events: none; }
 .film figcaption {
   display: flex;
   justify-content: space-between;
@@ -169,6 +169,7 @@
   font-size: 21px;
 }
 .film button {
+  min-height: 44px;
   padding: 6px 13px;
   border: 1px solid #abc3b9;
   border-radius: 8px;
@@ -187,6 +188,7 @@
   background: var(--white);
 }
 .film-actions { display: flex; gap: 8px; }
+.film-actions button { white-space: nowrap; }
 .film [data-advance] { min-width: 6em; color: #fff; background: var(--teal); }
 .film [data-advance]:hover { background: #114e47; }
 .film button[aria-pressed="true"] { color: #fff; background: var(--teal); }

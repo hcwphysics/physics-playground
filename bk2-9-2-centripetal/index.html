@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="vendor/package/dist/reset.css">
   <link rel="stylesheet" href="vendor/package/dist/reveal.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=inline-video1">
 </head>
 <body>
   <div class="reveal">
@@ -153,10 +153,10 @@
           <h2 id="velocity-heading">向心加速度</h2>
           <div class="content" style="display: grid; grid-template-columns: 2.02fr 1fr; gap: 38px;">
             <figure class="film">
-              <video controls playsinline preload="auto" poster="media/velocity-turns.png" src="media/velocity-turns.mp4" aria-label="勻速圓周運動的速度與加速度動畫">
+              <video playsinline muted preload="metadata" poster="media/velocity-turns.png" src="media/velocity-turns.mp4" aria-label="勻速圓周運動的速度與加速度動畫">
                 動畫展示等長的速度箭嘴沿切線轉向。把兩箭嘴平移至同一起點，可見速度的變化指向內側。
               </video>
-              <figcaption><p>動畫｜俯視勻速圓周運動</p></figcaption>
+              <figcaption><p>動畫｜俯視勻速圓周運動</p><div class="film-actions"><button type="button" data-advance>播放</button><button type="button" data-replay>↻ 重播</button></div></figcaption>
             </figure>
             <div class="film-reading">
               <div class="fact-line blue">
@@ -487,10 +487,10 @@
           <h2 id="tangent-heading">圓周運動和牛頓第一定律</h2>
           <div class="content" style="display: grid; grid-template-columns: 2.02fr 1fr; gap: 38px;">
             <figure class="film">
-              <video controls playsinline preload="auto" poster="media/tangent-exit.png" src="media/tangent-exit.mp4" aria-label="撤去向心力後，小球沿切線前進的動畫">
+              <video playsinline muted preload="metadata" poster="media/tangent-exit.png" src="media/tangent-exit.mp4" aria-label="撤去向心力後，小球沿切線前進的動畫">
                 撤去向心力且水平淨力為零時，小球沿離開點的切線直線前進，速度的大小和方向保持不變。
               </video>
-              <figcaption><p>動畫｜小球離開圓形路徑的瞬間</p></figcaption>
+              <figcaption><p>動畫｜小球離開圓形路徑的瞬間</p><div class="film-actions"><button type="button" data-advance>播放</button><button type="button" data-replay>↻ 重播</button></div></figcaption>
             </figure>
             <div class="film-reading">
               <div class="fact-line warm">
@@ -546,6 +546,6 @@
 
   <script src="vendor/package/dist/reveal.js"></script>
   <script src="vendor/package/plugin/notes/notes.js"></script>
-  <script src="orbit.js"></script>
+  <script src="orbit.js?v=inline-video1"></script>
 </body>
 </html>

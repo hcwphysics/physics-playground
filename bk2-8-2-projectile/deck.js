@@ -197,7 +197,7 @@
   function play(clip) {
     clip.muted = true;
     clip.play().catch(() => {
-      // The native controls remain available if the browser requires a click.
+      // Safari may require a tap. The slide's Play button remains available.
     });
   }
 
@@ -211,15 +211,27 @@
     });
 
     const advance = figure.querySelector('[data-advance]');
-    if (!advance) continue;
+    const updateAdvance = () => {
+      advance.textContent = !clip.paused ? '暫停' : clip.ended ? '從頭播放' : clip.currentTime > 0 ? '繼續播放' : '播放';
+    };
+    advance.addEventListener('click', () => {
+      clearTimeout(timer);
+      if (clip.paused) {
+        if (clip.ended) clip.currentTime = 0;
+        play(clip);
+      } else {
+        clip.pause();
+      }
+    });
+    for (const event of ['play', 'pause', 'ended', 'seeked']) {
+      clip.addEventListener(event, updateAdvance);
+    }
     const freezes = Array.from(figure.querySelectorAll('[data-freeze]'));
+    if (!freezes.length) continue;
     let frame;
 
     const selectFreeze = (selected) => {
       for (const button of freezes) button.setAttribute('aria-pressed', String(button === selected));
-    };
-    const updateAdvance = () => {
-      advance.textContent = !clip.paused ? '暫停' : clip.ended ? '從頭播放' : clip.currentTime > 0 ? '繼續播放' : '播放';
     };
     const stopAt = (button) => {
       clearTimeout(timer);
@@ -243,28 +255,15 @@
       }
       frame = requestAnimationFrame(checkTime);
     };
-    advance.addEventListener('click', () => {
-      clearTimeout(timer);
-      if (clip.paused) {
-        if (clip.ended) clip.currentTime = 0;
-        play(clip);
-      } else {
-        clip.pause();
-      }
-    });
     clip.addEventListener('play', () => {
       selectFreeze(null);
-      updateAdvance();
       watchSegment();
     });
     clip.addEventListener('pause', () => {
       if (clip.paused) cancelAnimationFrame(frame);
-      updateAdvance();
     });
-    clip.addEventListener('ended', updateAdvance);
     clip.addEventListener('seeked', () => {
       selectFreeze(clip.paused ? freezes.find(button => Math.abs(clip.currentTime - Number(button.dataset.freeze)) < 0.04) : null);
-      updateAdvance();
       watchSegment();
     });
     for (const button of freezes) {

@@ -159,7 +159,22 @@
 .textbook-orbit .arrow-label { font-size: 29px; }
 .travel-arrow { fill: none; stroke: var(--blue); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
 .travel-key { color: var(--blue-dark); }
-.film video { display: block; width: 100%; aspect-ratio: 16/9; background: var(--board); }
+.film video { display: block; width: 100%; aspect-ratio: 16/9; background: var(--board); pointer-events: none; }
+.film figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.film-actions { display: flex; gap: 8px; }
+.film-actions button {
+  min-height: 44px;
+  padding: 6px 13px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--blue-dark);
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.film-actions [data-advance] { min-width: 6em; background: var(--blue-dark); color: #fff; }
+.film-actions [data-replay]:hover { background: var(--faint-blue); }
 .film-reading { padding-top: 16px; gap: 34px; }
 
 .formula-panel {
