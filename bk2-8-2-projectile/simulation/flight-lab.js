@@ -64,6 +64,7 @@ const modes = {
 let mode = 'trial', flight = null, drag = null, chart, selected = null, frame = 0, cheerStart = null;
 let marks = [];
 let replayLanded=false;
+let hasFlightSprite;
 const activity = () => modes[mode];
 const trialComplete = () => mode==='trial' && modes.trial.cleared.size===targets.length;
 const checked = key => filters.find(input => input.dataset.show === key).checked;
@@ -362,7 +363,12 @@ function draw(now=performance.now()) {
   pen.clearRect(0,0,width,height); pen.lineCap='round';
   const setting = activity(), theta=setting.angle*radians;
   const pull=drag?.length || 0;
-  let pose={ x:-pull*Math.cos(theta)/scale, y:-pull*Math.sin(theta)/scale, pitch:0, pulled:pull>0 };
+  const birdPx=birdSize*scale;
+  const maxVisiblePull=Math.max(0,Math.min(chart.maxPull,
+    (x-1.6*birdPx-6)/Math.cos(theta), (height-y-1.6*birdPx-6)/Math.sin(theta)));
+  // Shorten the drawn pull near the edges without reducing the available launch speed.
+  const visiblePull=pull*(maxVisiblePull/chart.maxPull);
+  let pose={ x:-visiblePull*Math.cos(theta)/scale, y:-visiblePull*Math.sin(theta)/scale, pitch:0, pulled:pull>0 };
   const second=flight?.low;
   const elapsed=second && reduce.matches ? (flight.elapsed>=second.time ? second.time : 0) : flight?.elapsed;
   if (flight) pose=birdPose(flight.shot,elapsed);
@@ -374,13 +380,18 @@ function draw(now=performance.now()) {
     game.hit=-1;
   }
   game.wall=mode==='challenge' && !setting.review ? walls[setting.route] : null;
-  const moving=Boolean(flight || drag);
-  const scenePaint=paintWorld?.(chart,pose,game,moving);
+  const usingSprite=Boolean(flight) && hasFlightSprite!==false;
+  let scenePaint=paintWorld?.(chart,pose,game,usingSprite);
+  if (usingSprite && scenePaint && hasFlightSprite===undefined) {
+    // Some graphics backends cannot copy the portrait from the WebGL canvas.
+    const {width,height}=scenePaint;
+    hasFlightSprite=scenePaint.getContext('2d').getImageData(Math.floor(width/2),Math.floor(height/2),1,1).data[3]>0;
+    if (!hasFlightSprite) scenePaint=paintWorld(chart,pose,game,false);
+  }
   const threeD=Boolean(scenePaint);
   world.hidden=!threeD; el('scene-note').hidden=threeD;
   if (!threeD) flatField(pose,game);
-  const birdPx=birdSize*scale;
-  if(threeD && moving){
+  if (threeD && usingSprite && hasFlightSprite) {
     if(!pose.pulled){
       pen.save();pen.globalAlpha=.28/(1+.33*Math.max(0,pose.y));
       ellipse(x+pose.x*scale,y+.56*birdPx,.74*birdPx,.08*birdPx,'#244537');pen.restore();
