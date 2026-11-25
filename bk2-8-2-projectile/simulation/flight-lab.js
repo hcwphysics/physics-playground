@@ -19,6 +19,9 @@ const quantities = {
 };
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const el = id => document.getElementById(id);
+const root = document.documentElement;
+const embedded = window.parent !== window;
+root.classList.toggle('large-controls', !embedded);
 const canvas = el('plot');
 const pen = canvas.getContext('2d');
 const world = el('world');
@@ -174,7 +177,8 @@ function resize() {
   }
   pen.setTransform(ratio,0,0,ratio,0,0);
   const portrait = width <= 650 && height >= width;
-  if (portrait) el('lab').style.setProperty('--nav-bottom', (document.querySelector('.top').getBoundingClientRect().bottom+7)+'px');
+  const navBottom = document.querySelector('.top').getBoundingClientRect().bottom;
+  el('lab').style.setProperty('--nav-bottom', Math.ceil(navBottom+8)+'px');
   const x = portrait ? clamp(width*.17, 54, 88) : clamp(width*.125, 62, 185);
   const y = Math.round(height*(portrait && height<740 ? .74 : portrait ? .69 : .71));
   const right = portrait ? 14 : width - el('dock').getBoundingClientRect().left + 13;
@@ -684,11 +688,11 @@ compactPanels.addEventListener('change',() => {
 });
 function fullState() {
   const on=Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+  root.classList.toggle('large-controls', !embedded || on);
   el('fullscreen').setAttribute('aria-pressed',String(on));
   el('full-text').textContent=on ? '退出全螢幕' : '全螢幕';
   resize();
 }
-const root=document.documentElement;
 el('fullscreen').hidden=!(root.requestFullscreen || root.webkitRequestFullscreen);
 el('fullscreen').addEventListener('click',async () => {
   try {
@@ -698,7 +702,7 @@ el('fullscreen').addEventListener('click',async () => {
 });
 for (const name of ['fullscreenchange','webkitfullscreenchange']) document.addEventListener(name,fullState);
 document.addEventListener('visibilitychange',() => { if (document.hidden && flight && !flight.paused) pause(); });
-if (window.parent !== window) {
+if (embedded) {
   window.addEventListener('message', event => {
     if (event.source === window.parent && event.data === 'slide:stop' && flight && !flight.paused) pause();
   });

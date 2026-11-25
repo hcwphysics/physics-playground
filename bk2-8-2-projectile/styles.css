@@ -254,8 +254,31 @@
 }
 .recap-list h3 { color: var(--teal); }
 .simulation-frame { gap: 16px; padding: 28px 49px 61px; }
-.simulation-frame > header { gap: 5px; padding-bottom: 13px; }
+.simulation-frame > header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 13px;
+}
+.simulation-frame > header > div { display: grid; gap: 5px; }
 .simulation-frame h2 { font-size: 48px; }
+.reveal .lab-open {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 88px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: var(--white);
+  background: var(--teal);
+  font-size: 28px;
+  font-weight: 720;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.reveal .lab-open:hover { background: #11534b; }
 .reveal .lab-embed {
   box-sizing: border-box;
   display: block;

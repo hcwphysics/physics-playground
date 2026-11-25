@@ -121,6 +121,24 @@ details[open] > summary::after { content: "−"; }
 #status:not(:empty) { background: #fff5d9f5; border-color: #567975; color: var(--ink); font-weight: 750; }
 #status[data-hit="true"] { background: #ffde72; border: 2px solid #705014; color: #433110; }
 #scene-note { margin-left: auto; font-size: .73rem; }
+
+:root.large-controls {
+  --touch-target: 44px;
+  --dock: clamp(235px, 23vw, 292px);
+}
+.large-controls #lab :is(button, summary, .switches span, input[type="range"]) {
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+}
+.large-controls #dock {
+  top: var(--nav-bottom, 84px);
+  max-height: calc(100% - var(--nav-bottom, 84px) - max(66px, calc(env(safe-area-inset-bottom) + 58px)));
+}
+.large-controls #goals { top: var(--nav-bottom, 84px); }
+.large-controls #lab button.lock { min-width: 58px; font-size: .85rem; }
+.large-controls .switches small { font-size: .72rem; }
+.large-controls :is(.actions, #goals div) { flex-wrap: wrap; gap: 6px; }
+
 @media (max-width: 850px) {
   :root { --margin: 10px; --dock: 202px; }
   #dock { top: 69px; padding: 8px 9px 2px; }
@@ -136,6 +154,7 @@ details[open] > summary::after { content: "−"; }
   .modes { order: 2; justify-content: space-between; width: 100%; margin-top: 1px; }
   .modes button { flex: 1; }
   #dock { top: var(--nav-bottom, 125px); width: calc(100% - 2*var(--margin)); max-height: 43%; }
+  .large-controls #dock { max-height: 43%; }
   .parameters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
   .param { gap: 1px; font-size: .78rem; }
   .param .lock { font-size: .67rem; padding: 2px 4px; }
@@ -148,6 +167,7 @@ details[open] > summary::after { content: "−"; }
   .filters { padding-bottom: 5px; }
   .filters legend { padding-bottom: 3px; }
   #goals { top: auto; bottom: max(83px, calc(env(safe-area-inset-bottom) + 65px)); padding: 6px 10px; }
+  .large-controls #goals { top: auto; }
   .hud { gap: 3px; align-items: flex-start; flex-direction: column; }
   .telemetry, #status:not(:empty) { padding: 4px 8px; }
   #scene-note { position: absolute; bottom: 0; right: 0; }
@@ -155,6 +175,7 @@ details[open] > summary::after { content: "−"; }
 }
 @media (max-height: 480px) and (orientation: landscape) {
   :root { --dock: 185px; }
+  :root.large-controls { --dock: 220px; }
   .brand a { font-size: .67rem; }
   h1 { font-size: 22px; margin-top: 1px; }
   .top { top: max(3px, env(safe-area-inset-top)); }
