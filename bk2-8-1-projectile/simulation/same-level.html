@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>猴子和獵人｜同一水平</title>
   <link rel="stylesheet" href="forest.css">
-  <link rel="stylesheet" href="lesson.css">
+  <link rel="stylesheet" href="lesson.css?v=catalog-nav1">
+  <link rel="stylesheet" href="../../home/catalog-return.css?v=catalog-nav1">
   <script defer src="forest-model.js"></script>
   <script defer src="forest.js"></script>
 </head>
 <body class="lesson-forest">
+  <div class="catalog-toolbar" hidden>
+    <a class="catalog-return" href="../../index.html?v=catalog-nav1#simulations" aria-label="返回教材目錄" title="返回教材目錄">🔙</a>
+  </div>
   <main>
     <section class="field" aria-label="同一水平運動場">
       <div id="stage">
@@ -49,6 +53,7 @@
     </aside>
   </main>
   <script>
+    document.querySelector('.catalog-toolbar').hidden = window.parent !== window;
     document.addEventListener('keydown', (event) => {
       if (window.parent === window || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
       if (event.target?.closest?.('input, select, textarea')) return;

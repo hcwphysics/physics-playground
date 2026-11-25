@@ -11,6 +11,9 @@
 }
 
 .lesson-forest .field { min-height: 0; height: auto; }
+@media (min-width: 781px) {
+  .lesson-forest .catalog-toolbar:not([hidden]) + main { height: calc(100dvh - var(--catalog-return-row)); }
+}
 .lesson-forest #stage { min-height: 0; }
 .lesson-forest .scene-foot { padding: 9px 20px; font-size: 18px; }
 .lesson-forest .scene-foot b { font-size: 24px; }

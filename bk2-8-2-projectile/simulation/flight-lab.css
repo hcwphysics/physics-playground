@@ -35,10 +35,7 @@ button:disabled { opacity: .55; cursor: default; }
   top: max(12px, env(safe-area-inset-top)); display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; pointer-events: none;
 }
 .top > * { pointer-events: auto; }
-.brand a {
-  display: inline-block; text-decoration: none; color: #163f4b; background: #fff7dc;
-  border: 1px solid #6f9690; border-radius: 12px; padding: 1px 9px 3px; font-size: .8rem; font-weight: 700;
-}
+.brand { display: flex; align-items: center; gap: 8px; }
 h1 {
   margin-top: 4px; font-size: clamp(29px, 3.5vw, 55px); line-height: 1.15; letter-spacing: -.055em;
   color: #164a57; font-weight: 1000; paint-order: stroke fill; -webkit-text-stroke: 4px #fff5d8;
@@ -176,7 +173,6 @@ details[open] > summary::after { content: "−"; }
 @media (max-height: 480px) and (orientation: landscape) {
   :root { --dock: 185px; }
   :root.large-controls { --dock: 220px; }
-  .brand a { font-size: .67rem; }
   h1 { font-size: 22px; margin-top: 1px; }
   .top { top: max(3px, env(safe-area-inset-top)); }
   #dock { top: 50px; max-height: calc(100% - 62px); }

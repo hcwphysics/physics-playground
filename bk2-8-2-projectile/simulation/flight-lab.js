@@ -22,6 +22,8 @@ const el = id => document.getElementById(id);
 const root = document.documentElement;
 const embedded = window.parent !== window;
 root.classList.toggle('large-controls', !embedded);
+const returnLink = document.querySelector('.catalog-return');
+if (returnLink) returnLink.hidden = embedded;
 const canvas = el('plot');
 const pen = canvas.getContext('2d');
 const world = el('world');
