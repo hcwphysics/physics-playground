@@ -621,16 +621,28 @@ for (const button of locks) button.addEventListener('click',() => {
   setting.lock=setting.lock===key ? null : key; updateControls();
 });
 for (const checkbox of filters) checkbox.addEventListener('change',render);
-for (const button of modeButtons) button.addEventListener('click',() => {
-  if (mode===button.dataset.mode) return;
-  cancelInteraction(); mode=button.dataset.mode; selected=null;
+function showMode(nextMode) {
+  if (mode === nextMode) return;
+  cancelInteraction(); mode=nextMode; selected=null;
   el('lab').dataset.mode=mode;
-  for (const b of modeButtons) b.setAttribute('aria-pressed',String(b===button));
+  for (const button of modeButtons) button.setAttribute('aria-pressed',String(button.dataset.mode===mode));
   el('manual').open=mode!=='trial';
   el('records').open=!compactPanels.matches;
   announce(mode==='study' ? '鎖定一項發射設定，每次只改另一項。' : '');
   render();
+}
+function modeFromHash() {
+  const button = [...modeButtons].find(button => '#' + button.dataset.mode === location.hash);
+  return button?.dataset.mode ?? 'trial';
+}
+for (const button of modeButtons) button.addEventListener('click', () => {
+  const nextMode = button.dataset.mode;
+  if (nextMode === mode) return;
+  // Only the standalone lab owns the address bar. The deck owns its slide history.
+  if (!embedded) location.hash = nextMode;
+  showMode(nextMode);
 });
+window.addEventListener('hashchange', () => showMode(modeFromHash()));
 el('launch').addEventListener('click',launch); el('pause').addEventListener('click',pause);
 el('trial-retry').addEventListener('click',()=>{
   if (!trialComplete()) return;
@@ -710,6 +722,6 @@ if (embedded) {
 world.addEventListener('webglcontextlost',event => { event.preventDefault(); draw(); });
 world.addEventListener('webglcontextrestored',() => { resize(); });
 new ResizeObserver(resize).observe(canvas);
-const initialMode = Array.from(modeButtons).find(button => '#' + button.dataset.mode === location.hash);
-if (initialMode && initialMode.dataset.mode !== mode) initialMode.click();
+const initialMode = modeFromHash();
+if (initialMode !== mode) showMode(initialMode);
 else render();
